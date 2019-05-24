@@ -1,0 +1,35 @@
+.bar {
+  display: flex;
+  background-color: #3d3d3d;
+  height: 2em;
+  padding: 1em;
+  color: #faf;
+}
+
+.button {
+  background-color: #3d3d3d;
+  height: 1em;
+  width: 5%;
+  padding: 1em;
+  color: white;
+}
+
+.button:hover {
+  background-color: #333;
+}
+
+.pad {
+  flex-grow: 1;
+}
+
+.icon {
+  background-color: #3d3d3d;
+  height: 1em;
+  width: 5%;
+  padding: 1em;
+  color: white;
+}
+
+.icon:hover {
+  background-color: #333;
+}
