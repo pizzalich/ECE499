@@ -20,7 +20,7 @@ class App extends Component {
     return (
       <div className="App">
         <Menubar changeActiveComponent={this.changeActiveComponent} />
-        <Home page={this.state.page} />
+        <Home page={this.state.page} changeActiveComponent={this.changeActiveComponent}  />
         <Info page={this.state.page} />
         <Login page={this.state.page} />
         <Plants page={this.state.page} />

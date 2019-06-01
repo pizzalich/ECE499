@@ -1,7 +1,45 @@
 .info {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  background-color: #333;
+  padding: 0em;
+  color: white;
+}
+
+.barright {
   display: flex;
-  background-color: #fa3;
-  height: 100%;
-  width: 100%;
-  padding: 0px;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+  text-align: center;
+}
+
+.summaryright {
+  width: 80%;
+  padding-top: 10%;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.barleft {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  text-align: center;
+}
+
+.summaryleft {
+  width: 80%;
+  padding-top: 10%;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.profilepic {
+  width: 20%;
+  height: 300px;
+  background-color: grey;
+  border-radius: 0 30px 30px 30px;
+  border-color: #333;
 }

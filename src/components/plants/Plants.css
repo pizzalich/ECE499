@@ -1,7 +1,38 @@
 .plants {
   display: flex;
-  background-color: #fa3;
+  background-color: #333;
+  justify-content: space-around;
+  align-items: stretch;
   height: 100%;
   width: 100%;
   padding: 0px;
+  color: white;
+}
+
+.pannelleft {
+  width: 30%;
+  flex-direction: column;
+}
+
+.feedbox {
+  height: 40%;
+  background-color: #555;
+}
+
+.controlbox {
+  height: 60%;
+  background-color: #555;
+}
+
+.pannelright {
+  width: 70%;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: flex-start;
+  display: inline-flex;
+}
+
+.graphbox {
+  width: 50%;
+  height: 50%;
 }

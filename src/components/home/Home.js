@@ -90,7 +90,10 @@ class Home extends Component {
           <div>Time until harvest:</div>
           <div>{projection} Days</div>
         </div>
-        <div className="details">
+        <div
+          className="details"
+          onClick={() => this.props.changeActiveComponent("plants")}
+        >
           <div className="detailslink">Details</div>
         </div>
       </div>
