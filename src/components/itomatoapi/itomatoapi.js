@@ -1,5 +1,5 @@
 export const itomatoGetData = () => {
-  const data = fetch("http://localhost:3000/crud")
+  const data = fetch("https://itomato-server.herokuapp.com/crud")
     .then(response => response.json())
     .then(data => {
       return data;
@@ -14,7 +14,7 @@ export const itomatoPostData = (
   light = -1,
   moisture = -1
 ) => {
-  fetch("http://localhost:3000/crud", {
+  fetch("https://itomato-server.herokuapp.com/crud", {
     method: "post",
     headers: {
       "Content-Type": "application/json"
@@ -39,7 +39,7 @@ export const itomatoPostData = (
 
 export const itomatoGetImage = () => {
   //TODO THIS IS BROKEN
-  const data = fetch("http://localhost:3000/crud/image")
+  const data = fetch("https://itomato-server.herokuapp.com/crud/image")
     .then(response => response.json())
     .then(data => {
       return data;
@@ -50,7 +50,7 @@ export const itomatoGetImage = () => {
 
 export const itomatoPostImage = (image = {}) => {
   //TODO THIS IS BROKEN
-  fetch("http://localhost:3000/crud/image", {
+  fetch("https://itomato-server.herokuapp.com/crud/image", {
     method: "post",
     headers: {
       "Content-Type": "application/json"
