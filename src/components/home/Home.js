@@ -106,7 +106,7 @@ class Home extends Component {
         <div className="home">
           {this.column(photos[0], status[0], this.dummyData, projection[0])}
           {this.column(photos[1], status[1], this.dummyData, projection[1])}
-          {this.column(photos[2], status[2], this.dummyData, projection[2])}
+          {this.column(photos[1], status[2], this.dummyData, projection[2])}
           {this.column(photos[3], status[3], this.dummyData, projection[3])}
         </div>
       );
