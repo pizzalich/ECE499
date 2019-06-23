@@ -8,6 +8,11 @@
     "react-scripts": "^3.0.x",
     "react-vis": "^1.11.7"
   },
+  "engines": {
+    "node": "12.3.1",
+    "npm": "6.9.0"
+  },
+  "heroku-postbuild": "npm install && cd client && npm install --only-dev && npm install && npm run build",
   "devDependencies": {},
   "scripts": {
     "start": "react-scripts start",
