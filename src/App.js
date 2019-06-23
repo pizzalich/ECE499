@@ -17,8 +17,8 @@ class App extends Component {
   }
 
   componentDidMount() {
-    var data = itomatoGetData();
-    data.then(data => this.setState({ data: data }));
+    // var data = itomatoGetData();
+    // data.then(data => this.setState({ data: data }));
   }
 
   changeActiveComponent = data => {
