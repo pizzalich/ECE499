@@ -46,4 +46,20 @@
   background-color: grey;
   border-radius: 0 30px 30px 30px;
   border-color: #333;
+  justify-content: space-around;
+  align-content: center;
+  flex-direction: column;
+}
+
+.profilepicimg {
+  width: 80%;
+  height: auto;
+  border-radius: 0 30px 30px 30px;
+  vertical-align: middle;
+}
+
+.helper {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
 }
