@@ -59,18 +59,16 @@ class Plants extends Component {
             </div>
             <div className="controlbox">
               <div className="stats">
-                Temperature: 32 <br />
-                Humdiity: %200 <br />
-                Sunlight per day: 25 Hours <br />
-                Time Remaining: 420 Days
+                <u>At a Glance</u> <br /> <br />
+                Temperature: 16°C <br />
+                <br />
+                Humdity: %67 <br />
+                <br />
+                Sunlight per day: 16 Hours <br />
+                <br />
+                Time Remaining: 42 Days
               </div>
-              <div className="buttons">
-                <img
-                  src="https://www.sanwebe.com/wp-content/uploads/2014/02/css3-btn-32.jpg"
-                  alt="Plant 1"
-                  width="100%"
-                />
-              </div>
+              <div className="buttons" />
             </div>
           </div>
           <div className="pannelright">
