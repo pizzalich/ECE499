@@ -4,10 +4,7 @@ import Home from "./components/home/Home.js";
 import Info from "./components/info/Info.js";
 import Login from "./components/login/Login.js";
 import Plants from "./components/plants/Plants.js";
-import {
-  itomatoGetData,
-  itomatoPostData
-} from "./components/itomatoapi/itomatoapi.js";
+import { itomatoGetData } from "./components/itomatoapi/itomatoapi.js";
 import "./App.css";
 
 class App extends Component {
@@ -17,8 +14,8 @@ class App extends Component {
   }
 
   componentDidMount() {
-    // var data = itomatoGetData();
-    // data.then(data => this.setState({ data: data }));
+    var data = itomatoGetData();
+    data.then(data => this.setState({ data: data }));
   }
 
   changeActiveComponent = data => {
@@ -27,7 +24,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App" onClick={itomatoGetData}>
+      <div className="App">
         <Menubar changeActiveComponent={this.changeActiveComponent} />
         <Home
           page={this.state.page}
