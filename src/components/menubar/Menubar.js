@@ -19,12 +19,6 @@ class Menubar extends Component {
         </div>
         <div
           className="button"
-          onClick={() => this.props.changeActiveComponent("store")}
-        >
-          Store
-        </div>
-        <div
-          className="button"
           onClick={() => this.props.changeActiveComponent("info")}
         >
           Info
@@ -34,8 +28,7 @@ class Menubar extends Component {
           className="icon"
           onClick={() => this.props.changeActiveComponent("login")}
         >
-          {/* eslint-disable-next-line */}
-          🍅
+          <img className="iconimg" src="/tomato.png" alt="" />
         </div>
       </div>
     );
