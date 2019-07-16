@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import {
   FlexibleXYPlot,
-  XAxis,
+  ChartLabel,
   VerticalBarSeries,
   LineMarkSeries,
-  LineSeries
+  LineSeries,
+  XAxis,
+  YAxis
 } from "react-vis";
 import "./Home.css";
 import "../../../node_modules/react-vis/dist/style.css";
@@ -99,31 +101,39 @@ class Home extends Component {
         </div>
         <div className="graph">
           Soil Moisture
-          <FlexibleXYPlot>
-            <XAxis />
-            <VerticalBarSeries
-              className="area-series"
-              data={data}
-              color="#FFAA33"
-            />
-            <LineSeries
-              className="line-series"
-              data={waterLine}
-              color="#FF0000"
-            />
-          </FlexibleXYPlot>
+          {this.props.drawgraphs && (
+            <FlexibleXYPlot className="moisturegraph">
+              <XAxis />
+              <YAxis />
+              <VerticalBarSeries
+                className="area-series"
+                data={waterData}
+                color="aqua"
+              />
+              <LineSeries
+                className="line-series"
+                strokeStyle="dashed"
+                data={waterLine}
+                color="grey"
+              />
+            </FlexibleXYPlot>
+          )}
         </div>
         <div className="padding" />
         <div className="graph">
-          Temperature
-          <FlexibleXYPlot xType="time" colorType="literal">
-            <VerticalBarSeries
-              className="humidity-series"
-              data={humidData}
-              color="aqua"
-            />
-            <LineMarkSeries className="linemark-series" data={tempData} />
-          </FlexibleXYPlot>
+          Temperature & Humidity
+          {this.props.drawgraphs && (
+            <FlexibleXYPlot colorType="literal" className="tempgraph">
+              <XAxis />
+              <YAxis />
+              <VerticalBarSeries
+                className="humidity-series"
+                data={humidData}
+                color="#FFAA33"
+              />
+              <LineMarkSeries className="linemark-series" data={tempData} />
+            </FlexibleXYPlot>
+          )}
         </div>
         <div className="padding" />
         <div className="projection">
