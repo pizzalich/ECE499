@@ -9,7 +9,11 @@
 }
 
 .barright {
-  display: flex;
+  display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox; /* TWEENER - IE 10 */
+  display: -webkit-flex; /* NEW - Chrome */
+  display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
   flex-direction: row-reverse;
   justify-content: flex-start;
   text-align: center;
@@ -20,6 +24,7 @@
   padding-top: 10%;
   padding-left: 1em;
   padding-right: 1em;
+  text-align: justify;
 }
 
 .barleft {
@@ -38,6 +43,26 @@
   padding-top: 10%;
   padding-left: 1em;
   padding-right: 1em;
+  text-align: justify;
+}
+
+.barcenter {
+  display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox; /* TWEENER - IE 10 */
+  display: -webkit-flex; /* NEW - Chrome */
+  display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: center;
+}
+
+.sources {
+  width: 100%;
+  padding-top: 10%;
+  padding-left: 1em;
+  padding-right: 1em;
+  text-align: justify;
 }
 
 .profilepic {

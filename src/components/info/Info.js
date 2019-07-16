@@ -7,30 +7,55 @@ class Info extends Component {
       return (
         <div className="info">
           <div className="banner">
+            {/* eslint-disable-next-line */}
             <span>👌😉🍅</span>
             <div className="logo">I-Tomato</div>
           </div>
           <div className="barleft">
             <div className="profilepic">
               <span className="helper" />
-              <img className="profilepicimg" src="/growhouse.jpg" />
+              <img className="profilepicimg" src="/growhouse.jpg" alt=" " />
             </div>
             <div className="summaryleft">
               <u>What is I-Tomato?</u>
               <br />
               I-Tomato is a automated, smart greenhouse designed to help you
-              grow better! I-tomato uses a combination of light weight sensors
-              and computer vision techniques to help you give your plants the
-              care that they need. I-tomato provides a low cost alternative to
+              grow better! I-tomato uses a combination of digital sensors and
+              computer vision techniques to help you give your plants the care
+              that they need. I-tomato provides a low cost alternative to
               conventional smart grow systems by giving you only the data you
-              need. I-tomato also provides a web and andriod app to give you the
+              need. I-tomato provides both web and andriod app to give you the
               updates on your plants when you need them. Developed by a team of
               passionate 4th year engineering students, I-tomatio is a vision of
-              the future of smart home gardening
+              the future of smart home gardening.
             </div>
           </div>
           <div className="barright">
-            <div className="profilepic">PIC GOES HERE</div>
+            <div className="profilepic">
+              <span className="helper" />
+              <img className="profilepicimg" src="/tomato.png" alt=" " />
+            </div>
+            <div className="summaryright">
+              I-Tomato follows the Mississippi State University’s Greenhouse
+              Tomato Handbook[1] to help you keep track of what your plant
+              needs. I-Tomato's sensor array keeps track of your plants
+              temperature, humdity, soil moisture, and light levels, while
+              provides you with a live dashboard to check any time.
+            </div>
+          </div>
+          <div className="barleft">
+            <div className="profilepic">
+              <span className="helper" />
+              <img className="profilepicimg" src="/tomato.png" alt=" " />
+            </div>
+            <div className="summaryleft">Summary and sources</div>
+          </div>
+
+          <div className="barright">
+            <div className="profilepic">
+              <span className="helper" />
+              <img className="profilepicimg" src="/tomato.png" alt=" " />
+            </div>
             <div className="summaryright">
               <u>Marc Bonwick</u> is a 4th year student at the University of
               Victoria. Marc has a pasion for computer engineering and web
@@ -40,7 +65,10 @@ class Info extends Component {
             </div>
           </div>
           <div className="barleft">
-            <div className="profilepic">PIC GOES HERE</div>
+            <div className="profilepic">
+              <span className="helper" />
+              <img className="profilepicimg" src="/tomato.png" alt=" " />
+            </div>
             <div className="summaryleft">
               <u>Jeffrey Farrell</u> is a 4th year electrical engineering
               student at the University of Victoria. Born in the Comox Valley,
@@ -58,20 +86,25 @@ class Info extends Component {
             </div>
           </div>
           <div className="barright">
-            <div className="profilepic">PIC GOES HERE</div>
+            <div className="profilepic">
+              <span className="helper" />
+              <img className="profilepicimg" src="/tomato.png" alt=" " />
+            </div>
             <div className="summaryright">
-              BIO GOES HERELorem ipsum dolor sit amet, consectetur adipiscing
-              elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-              aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-              laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-              dolor in reprehenderit in voluptate velit esse cillum dolore eu
-              fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-              proident, sunt in culpa qui officia deserunt mollit anim id est
-              laborum.
+              <u>Kirk D'Mello</u> is a fourth-year Electrical Engineering
+              student in his final academic semester. Kirk has been focusing on
+              the control and automation side of I-Tomato with most of his
+              effort going towards the implementation and testing of the finite
+              state-machine, and interfacing with the water pump used for
+              watering. Kirk is keen on bringing the skills he's developed at
+              UVIC to the real world.
             </div>
           </div>
           <div className="barleft">
-            <div className="profilepic">PIC GOES HERE</div>
+            <div className="profilepic">
+              <span className="helper" />
+              <img className="profilepicimg" src="/tomato.png" alt=" " />
+            </div>
             <div className="summaryleft">
               BIO GOES HERE Lorem ipsum dolor sit amet, consectetur adipiscing
               elit, sed do eiusmod tempor incididunt ut labore et dolore magna
@@ -84,7 +117,10 @@ class Info extends Component {
             </div>
           </div>
           <div className="barright">
-            <div className="profilepic">PIC GOES HERE</div>
+            <div className="profilepic">
+              <span className="helper" />
+              <img className="profilepicimg" src="/tomato.png" alt=" " />
+            </div>
             <div className="summaryright">
               BIO GOES HERE Lorem ipsum dolor sit amet, consectetur adipiscing
               elit, sed do eiusmod tempor incididunt ut labore et dolore magna
@@ -94,6 +130,37 @@ class Info extends Component {
               fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
               proident, sunt in culpa qui officia deserunt mollit anim id est
               laborum.
+            </div>
+          </div>
+          <div className="barleft">
+            <div className="profilepic">
+              <span className="helper" />
+              <img className="profilepicimg" src="/tomato.png" alt=" " />
+            </div>
+            <div className="summaryleft">
+              BIO GOES HERE Lorem ipsum dolor sit amet, consectetur adipiscing
+              elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+              aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+              laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+              dolor in reprehenderit in voluptate velit esse cillum dolore eu
+              fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+              proident, sunt in culpa qui officia deserunt mollit anim id est
+              laborum.
+            </div>
+          </div>
+          <div className="barcenter">
+            <div className="sources">
+              Sources
+              <hr />
+              [1] R. G. Snyder, Greenhouse Tomato Handbook. Raleigh, NC:
+              Mississippi State University, 2007.
+              <br />
+              [2] <br />
+              [3] <br />
+              [4] <br />
+              [5] <br />
+              [6] <br />
+              [7]
             </div>
           </div>
         </div>
