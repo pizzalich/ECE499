@@ -6,6 +6,7 @@ class Login extends Component {
     if (this.props.page === "login") {
       return (
         <div className="login">
+          {/* eslint-disable-next-line */}
           <span>👌🍅👌</span>
         </div>
       );
