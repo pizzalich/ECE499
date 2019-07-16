@@ -4,41 +4,42 @@ import {
   XAxis,
   VerticalBarSeries,
   LineMarkSeries,
-  LineSeries,
-  AreaSeries
+  LineSeries
 } from "react-vis";
 import "./Home.css";
 import "../../../node_modules/react-vis/dist/style.css";
 
-const myDATA = [
-  { x: 1, y: 0.25, color: "#FFAA33" },
-  { x: 2, y: 0.75, color: "#FFAA33" },
-  { x: 3, y: 1.11, color: "#FFAA33" },
-  { x: 4, y: 1.25, color: "#FFAA33" },
-  { x: 5, y: 1.11, color: "#FFAA33" },
-  { x: 6, y: 0.75, color: "#FFAA33" },
-  { x: 7, y: 0.25, color: "#FFAA33" },
-  { x: 8, y: -0.25, color: "#33A2FF" },
-  { x: 9, y: -0.62, color: "#33A2FF" },
-  { x: 10, y: -0.75, color: "#33A2FF" },
-  { x: 11, y: -0.62, color: "#33A2FF" },
-  { x: 12, y: -0.25, color: "#33A2FF" }
+const tempData = [
+  { x: 1, y: 1.25, color: "#FFAA33" },
+  { x: 2, y: 1.75, color: "#FFAA33" },
+  { x: 3, y: 2.11, color: "#FFAA33" },
+  { x: 4, y: 2.25, color: "#FFAA33" },
+  { x: 5, y: 2.11, color: "#FFAA33" },
+  { x: 6, y: 1.75, color: "#FFAA33" },
+  { x: 7, y: 1.25, color: "#FFAA33" },
+  { x: 8, y: 0.75, color: "#33A2FF" },
+  { x: 9, y: 0.38, color: "#33A2FF" },
+  { x: 10, y: 0.25, color: "#33A2FF" },
+  { x: 11, y: 0.38, color: "#33A2FF" },
+  { x: 12, y: 0.75, color: "#33A2FF" }
+];
+
+const humidData = [
+  { x: 1, y: 0.25 },
+  { x: 2, y: 0.75 },
+  { x: 3, y: 1.11 },
+  { x: 4, y: 1.25 },
+  { x: 5, y: 1.11 },
+  { x: 6, y: 0.75 },
+  { x: 7, y: 0.25 },
+  { x: 8, y: 0.25 },
+  { x: 9, y: 0.22 },
+  { x: 10, y: 0.25 },
+  { x: 11, y: 0.32 },
+  { x: 12, y: 0.25 }
 ];
 
 const waterData = [
-  { x: 1, y: 0.1 },
-  { x: 2, y: 0.1 },
-  { x: 3, y: 1 },
-  { x: 4, y: 1 },
-  { x: 5, y: 1 },
-  { x: 6, y: 0.8 },
-  { x: 7, y: 0.5 },
-  { x: 8, y: 0.3 },
-  { x: 9, y: 0.2 },
-  { x: 10, y: 0.1 }
-];
-
-const tempData = [
   { x: 1, y: 0.1 },
   { x: 2, y: 0.1 },
   { x: 3, y: 1 },
@@ -76,10 +77,6 @@ const status = ["good", "dry", "dead", "wet"];
 const projection = ["25", "69", "420", "0"];
 
 class Home extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   getStatus = status => {
     if (status === "good") return "😊";
     if (status === "dry") return "🔥";
@@ -101,7 +98,7 @@ class Home extends Component {
           <div>Temperature: 25°C</div>
         </div>
         <div className="graph">
-          Water Level
+          Soil Moisture
           <FlexibleXYPlot>
             <XAxis />
             <VerticalBarSeries
@@ -118,10 +115,14 @@ class Home extends Component {
         </div>
         <div className="padding" />
         <div className="graph">
-          Temperature and Humidity
+          Temperature
           <FlexibleXYPlot xType="time" colorType="literal">
-            <VerticalBarSeries data={myDATA} />
-            <LineMarkSeries className="linemark-series-example" data={myDATA} />
+            <VerticalBarSeries
+              className="humidity-series"
+              data={humidData}
+              color="aqua"
+            />
+            <LineMarkSeries className="linemark-series" data={tempData} />
           </FlexibleXYPlot>
         </div>
         <div className="padding" />
