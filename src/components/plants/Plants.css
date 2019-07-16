@@ -20,6 +20,7 @@
 
 .feedbox {
   height: 40%;
+  padding-top: 1em;
   background-color: #555;
 }
 
@@ -44,4 +45,12 @@
 .stats {
   text-align: left;
   font-size: 1.2em;
+}
+
+.statsdata {
+  padding-left: 0.4em;
+}
+
+.statstitle {
+  padding-left: 0.4em;
 }

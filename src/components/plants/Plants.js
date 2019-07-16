@@ -81,16 +81,23 @@ class Plants extends Component {
             </div>
             <div className="controlbox">
               <div className="stats">
-                Current Status
-                <br />
+                <div className="statstitle">Current Status</div>
                 <hr />
-                Temperature: 16°C <br />
-                <br />
-                Humdity: %67 <br />
-                <br />
-                Sunlight Last 24h: 16 Hours <br />
-                <br />
-                Time Remaining: 42 Days
+                <div className="statsdata">
+                  Temperature: 16°C <br />
+                  <br />
+                  Humidity: 67% <br />
+                  <br />
+                  Sunlight Last 24h: 16 Hours <br />
+                  <br />
+                  Time Remaining: 42 Days
+                  <br />
+                  <br />
+                  Fan Status: Off
+                  <br />
+                  <br />
+                  Water Pump Status: Off
+                </div>
                 <hr />
               </div>
               <div className="buttons" />
@@ -100,7 +107,7 @@ class Plants extends Component {
             <div className="graphbox">
               <FlexibleXYPlot xType="time" colorType="literal">
                 <ChartLabel
-                  text="Soil Moisture"
+                  text="Soil Moisture Level"
                   className="alt-y-label"
                   includeMargin={false}
                   xPercent={0.06}
@@ -113,12 +120,13 @@ class Plants extends Component {
                 <VerticalBarSeries
                   className="area-series"
                   data={waterData}
-                  color="#FFAA33"
+                  color="aqua"
                 />
                 <LineSeries
                   className="line-series"
+                  strokeStyle="dashed"
                   data={waterLine}
-                  color="#FF0000"
+                  color="grey"
                 />
               </FlexibleXYPlot>
             </div>
@@ -138,7 +146,7 @@ class Plants extends Component {
                 <VerticalBarSeries
                   className="humidity-series"
                   data={humidData}
-                  color="aqua"
+                  color="FFAA33"
                 />
                 <LineMarkSeries className="linemark-series" data={tempData} />
               </FlexibleXYPlot>
@@ -146,7 +154,7 @@ class Plants extends Component {
             <div className="graphbox">
               <FlexibleXYPlot>
                 <ChartLabel
-                  text="Soil Moisture"
+                  text="Tomato Color Change"
                   className="alt-y-label"
                   includeMargin={false}
                   xPercent={0.0}
