@@ -7,13 +7,10 @@ class Info extends Component {
       return (
         <div className="info">
           <div className="banner">
-            {/* eslint-disable-next-line */}
-            <span>👌😉🍅</span>
-            <div className="logo">I-Tomato</div>
+            <div className="logo" />
           </div>
           <div className="barleft">
             <div className="profilepic">
-              <span className="helper" />
               <img className="profilepicimg" src="/growhouse.jpg" alt=" " />
             </div>
             <div className="summaryleft">
@@ -32,7 +29,6 @@ class Info extends Component {
           </div>
           <div className="barright">
             <div className="profilepic">
-              <span className="helper" />
               <img className="profilepicimg" src="/tomato.png" alt=" " />
             </div>
             <div className="summaryright">
@@ -45,7 +41,6 @@ class Info extends Component {
           </div>
           <div className="barleft">
             <div className="profilepic">
-              <span className="helper" />
               <img className="profilepicimg" src="/tomato.png" alt=" " />
             </div>
             <div className="summaryleft">Summary and sources</div>
@@ -53,7 +48,6 @@ class Info extends Component {
 
           <div className="barright">
             <div className="profilepic">
-              <span className="helper" />
               <img className="profilepicimg" src="/tomato.png" alt=" " />
             </div>
             <div className="summaryright">
@@ -66,7 +60,6 @@ class Info extends Component {
           </div>
           <div className="barleft">
             <div className="profilepic">
-              <span className="helper" />
               <img className="profilepicimg" src="/tomato.png" alt=" " />
             </div>
             <div className="summaryleft">
@@ -87,7 +80,6 @@ class Info extends Component {
           </div>
           <div className="barright">
             <div className="profilepic">
-              <span className="helper" />
               <img className="profilepicimg" src="/tomato.png" alt=" " />
             </div>
             <div className="summaryright">
@@ -102,50 +94,47 @@ class Info extends Component {
           </div>
           <div className="barleft">
             <div className="profilepic">
-              <span className="helper" />
               <img className="profilepicimg" src="/tomato.png" alt=" " />
             </div>
             <div className="summaryleft">
-              BIO GOES HERE Lorem ipsum dolor sit amet, consectetur adipiscing
-              elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-              aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-              laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-              dolor in reprehenderit in voluptate velit esse cillum dolore eu
-              fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-              proident, sunt in culpa qui officia deserunt mollit anim id est
-              laborum.
+              <u>Paul Formanek</u> Lorem ipsum dolor sit amet, consectetur
+              adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+              exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              consequat. Duis aute irure dolor in reprehenderit in voluptate
+              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+              occaecat cupidatat non proident, sunt in culpa qui officia
+              deserunt mollit anim id est laborum.
             </div>
           </div>
           <div className="barright">
             <div className="profilepic">
-              <span className="helper" />
               <img className="profilepicimg" src="/tomato.png" alt=" " />
             </div>
             <div className="summaryright">
-              BIO GOES HERE Lorem ipsum dolor sit amet, consectetur adipiscing
-              elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-              aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-              laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-              dolor in reprehenderit in voluptate velit esse cillum dolore eu
-              fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-              proident, sunt in culpa qui officia deserunt mollit anim id est
-              laborum.
+              <u>Jesse Cao</u> Lorem ipsum dolor sit amet, consectetur
+              adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+              exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              consequat. Duis aute irure dolor in reprehenderit in voluptate
+              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+              occaecat cupidatat non proident, sunt in culpa qui officia
+              deserunt mollit anim id est laborum.
             </div>
           </div>
           <div className="barleft">
             <div className="profilepic">
-              <span className="helper" />
               <img className="profilepicimg" src="/tomato.png" alt=" " />
             </div>
             <div className="summaryleft">
-              BIO GOES HERE Lorem ipsum dolor sit amet, consectetur adipiscing
-              elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-              aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-              laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-              dolor in reprehenderit in voluptate velit esse cillum dolore eu
-              fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-              proident, sunt in culpa qui officia deserunt mollit anim id est
-              laborum.
+              <u>Kevin Cao</u> Lorem ipsum dolor sit amet, consectetur
+              adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+              exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              consequat. Duis aute irure dolor in reprehenderit in voluptate
+              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+              occaecat cupidatat non proident, sunt in culpa qui officia
+              deserunt mollit anim id est laborum.
             </div>
           </div>
           <div className="barcenter">

@@ -68,23 +68,23 @@
 .profilepic {
   width: 20%;
   height: 300px;
+  margin: 1em;
   background-color: grey;
   border-radius: 0 30px 30px 30px;
   border-color: #333;
+  display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox; /* TWEENER - IE 10 */
+  display: -webkit-flex; /* NEW - Chrome */
+  display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
   justify-content: space-around;
   align-content: center;
   flex-direction: column;
+  align-items: center;
 }
 
 .profilepicimg {
   width: 80%;
   height: auto;
   border-radius: 0 30px 30px 30px;
-  vertical-align: middle;
-}
-
-.helper {
-  display: inline-block;
-  height: 100%;
-  vertical-align: middle;
 }
