@@ -2,36 +2,45 @@ import React, { Component } from "react";
 import {
   FlexibleXYPlot,
   VerticalBarSeries,
-  AreaSeries,
+  LineMarkSeries,
   ArcSeries,
   LineSeries,
-  HorizontalGridLines,
-  VerticalGridLines,
-  XAxis,
-  YAxis,
   ChartLabel
 } from "react-vis";
 import "./Plants.css";
 import "../../../node_modules/react-vis/dist/style.css";
 
-const PI = Math.PI;
-
-const lightDATA = [
-  { x: 1, y: 0.25, color: "#FFAA33" },
-  { x: 2, y: 0.75, color: "#FFAA33" },
-  { x: 3, y: 1.11, color: "#FFAA33" },
-  { x: 4, y: 1.25, color: "#FFAA33" },
-  { x: 5, y: 1.11, color: "#FFAA33" },
-  { x: 6, y: 0.75, color: "#FFAA33" },
-  { x: 7, y: 0.25, color: "#FFAA33" },
-  { x: 8, y: -0.25, color: "#33A2FF" },
-  { x: 9, y: -0.62, color: "#33A2FF" },
-  { x: 10, y: -0.75, color: "#33A2FF" },
-  { x: 11, y: -0.62, color: "#33A2FF" },
-  { x: 12, y: -0.25, color: "#33A2FF" }
+const tempData = [
+  { x: 1, y: 1.25, color: "#FFAA33" },
+  { x: 2, y: 1.75, color: "#FFAA33" },
+  { x: 3, y: 2.11, color: "#FFAA33" },
+  { x: 4, y: 2.25, color: "#FFAA33" },
+  { x: 5, y: 2.11, color: "#FFAA33" },
+  { x: 6, y: 1.75, color: "#FFAA33" },
+  { x: 7, y: 1.25, color: "#FFAA33" },
+  { x: 8, y: 0.75, color: "#33A2FF" },
+  { x: 9, y: 0.38, color: "#33A2FF" },
+  { x: 10, y: 0.25, color: "#33A2FF" },
+  { x: 11, y: 0.38, color: "#33A2FF" },
+  { x: 12, y: 0.75, color: "#33A2FF" }
 ];
 
-const dummyData = [
+const humidData = [
+  { x: 1, y: 0.25 },
+  { x: 2, y: 0.75 },
+  { x: 3, y: 1.11 },
+  { x: 4, y: 1.25 },
+  { x: 5, y: 1.11 },
+  { x: 6, y: 0.75 },
+  { x: 7, y: 0.25 },
+  { x: 8, y: 0.25 },
+  { x: 9, y: 0.22 },
+  { x: 10, y: 0.25 },
+  { x: 11, y: 0.32 },
+  { x: 12, y: 0.25 }
+];
+
+const waterData = [
   { x: 1, y: 0.1 },
   { x: 2, y: 0.1 },
   { x: 3, y: 1 },
@@ -42,6 +51,19 @@ const dummyData = [
   { x: 8, y: 0.3 },
   { x: 9, y: 0.2 },
   { x: 10, y: 0.1 }
+];
+
+const waterLine = [
+  { x: 1, y: 0.25 },
+  { x: 2, y: 0.25 },
+  { x: 3, y: 0.25 },
+  { x: 4, y: 0.25 },
+  { x: 5, y: 0.25 },
+  { x: 6, y: 0.25 },
+  { x: 7, y: 0.25 },
+  { x: 8, y: 0.25 },
+  { x: 9, y: 0.25 },
+  { x: 10, y: 0.25 }
 ];
 
 class Plants extends Component {
@@ -59,53 +81,75 @@ class Plants extends Component {
             </div>
             <div className="controlbox">
               <div className="stats">
-                <u>At a Glance</u> <br /> <br />
+                Current Status
+                <br />
+                <hr />
                 Temperature: 16°C <br />
                 <br />
                 Humdity: %67 <br />
                 <br />
-                Sunlight per day: 16 Hours <br />
+                Sunlight Last 24h: 16 Hours <br />
                 <br />
                 Time Remaining: 42 Days
+                <hr />
               </div>
               <div className="buttons" />
             </div>
           </div>
           <div className="pannelright">
             <div className="graphbox">
-              {" "}
               <FlexibleXYPlot xType="time" colorType="literal">
-                <VerticalBarSeries data={lightDATA} />
-              </FlexibleXYPlot>
-            </div>
-            <div className="graphbox">
-              {" "}
-              <FlexibleXYPlot>
-                <XAxis />
-                <AreaSeries
-                  className="area-series"
-                  data={dummyData}
-                  color="#FFAA33"
-                />
-              </FlexibleXYPlot>
-            </div>
-            <div className="graphbox">
-              <FlexibleXYPlot>
-                {/* <HorizontalGridLines />
-                <VerticalGridLines /> */}
                 <ChartLabel
-                  text="X Axis"
-                  className="alt-x-label"
-                  includeMargin={false}
-                  xPercent={0.025}
-                  yPercent={1.01}
-                />
-
-                <ChartLabel
-                  text="Y Axis"
+                  text="Soil Moisture"
                   className="alt-y-label"
                   includeMargin={false}
                   xPercent={0.06}
+                  yPercent={0.06}
+                  style={{
+                    transform: "rotate(-90)",
+                    textAnchor: "end"
+                  }}
+                />
+                <VerticalBarSeries
+                  className="area-series"
+                  data={waterData}
+                  color="#FFAA33"
+                />
+                <LineSeries
+                  className="line-series"
+                  data={waterLine}
+                  color="#FF0000"
+                />
+              </FlexibleXYPlot>
+            </div>
+            <div className="graphbox">
+              <FlexibleXYPlot>
+                <ChartLabel
+                  text="Temperature and Humidity"
+                  className="alt-y-label"
+                  includeMargin={false}
+                  xPercent={0.0}
+                  yPercent={0.06}
+                  style={{
+                    transform: "rotate(-90)",
+                    textAnchor: "end"
+                  }}
+                />
+                <VerticalBarSeries
+                  className="humidity-series"
+                  data={humidData}
+                  color="aqua"
+                />
+                <LineMarkSeries className="linemark-series" data={tempData} />
+              </FlexibleXYPlot>
+            </div>
+            <div className="graphbox">
+              <FlexibleXYPlot>
+                <ChartLabel
+                  text="Soil Moisture"
+                  className="alt-y-label"
+                  includeMargin={false}
+                  xPercent={0.0}
                   yPercent={0.06}
                   style={{
                     transform: "rotate(-90)",
@@ -135,34 +179,38 @@ class Plants extends Component {
               </FlexibleXYPlot>
             </div>
             <div className="graphbox">
-              {" "}
               <FlexibleXYPlot
                 xDomain={[-3, 3]}
                 yDomain={[-3, 3]}
-                getAngle={d => d.time}
-                getAngle0={d => 0}
                 colorType="literal"
               >
+                <ChartLabel
+                  text="Sunlight Hours Per Day"
+                  className="alt-y-label"
+                  includeMargin={false}
+                  xPercent={0.06}
+                  yPercent={0.06}
+                  style={{
+                    transform: "rotate(-90)",
+                    textAnchor: "end"
+                  }}
+                />
                 <ArcSeries
                   radiusDomain={[0, 3]}
                   data={[
                     {
-                      time: 6,
+                      angle0: 0,
+                      angle: 1.4 * 3.14,
+                      radius: 2,
                       radius0: 1,
-                      radius: 1.5,
                       color: "#FFAA33"
                     },
                     {
-                      time: 4.5,
-                      radius0: 1.6,
-                      radius: 2.1,
-                      color: "#FFAAFF"
-                    },
-                    {
-                      time: 0.6,
-                      radius0: 2.2,
-                      radius: 2.7,
-                      color: "#32AAFF"
+                      angle0: 1.4 * 3.14,
+                      angle: 2 * 3.14,
+                      radius: 1.8,
+                      radius0: 1,
+                      color: "grey"
                     }
                   ]}
                 />

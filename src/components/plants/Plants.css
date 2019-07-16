@@ -40,3 +40,8 @@
   width: 50%;
   height: 50%;
 }
+
+.stats {
+  text-align: left;
+  font-size: 1.2em;
+}
