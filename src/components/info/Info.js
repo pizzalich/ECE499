@@ -11,7 +11,7 @@ class Info extends Component {
           </div>
           <div className="barleft">
             <div className="profilepic">
-              <img className="profilepicimg" src="/growhouse.jpg" alt=" " />
+              <img className="profilepicimg" src="./growhouse.jpg" alt=" " />
             </div>
             <div className="summaryleft">
               <u>What is I-Tomato?</u>
@@ -29,26 +29,30 @@ class Info extends Component {
           </div>
           <div className="barright">
             <div className="profilepic">
-              <img className="profilepicimg" src="/tomato.png" alt=" " />
+              <img className="profilepicimg" src="./tomato.png" alt=" " />
             </div>
             <div className="summaryright">
               I-Tomato follows the Mississippi State University’s Greenhouse
               Tomato Handbook[1] to help you keep track of what your plant
               needs. I-Tomato's sensor array keeps track of your plants
-              temperature, humdity, soil moisture, and light levels, while
-              provides you with a live dashboard to check any time.
+              temperature, humdity, soil moisture, and light levels. This data
+              is also sent to the web server for further analysis and trending,
+              as well as to provide notifications and statuses. A camera is
+              connected to the I-Tomato unit and used is for computer vision,
+              which helps provide a more accurate depiction of the tomato
+              plant's health and ripeness.
             </div>
           </div>
           <div className="barleft">
             <div className="profilepic">
-              <img className="profilepicimg" src="/tomato.png" alt=" " />
+              <img className="profilepicimg" src="./corn.png" alt=" " />
             </div>
             <div className="summaryleft">Summary and sources</div>
           </div>
 
           <div className="barright">
             <div className="profilepic">
-              <img className="profilepicimg" src="/tomato.png" alt=" " />
+              <img className="profilepicimg" src="./carrot.png" alt=" " />
             </div>
             <div className="summaryright">
               <u>Marc Bonwick</u> is a 4th year student at the University of
@@ -60,7 +64,7 @@ class Info extends Component {
           </div>
           <div className="barleft">
             <div className="profilepic">
-              <img className="profilepicimg" src="/tomato.png" alt=" " />
+              <img className="profilepicimg" src="./leafy.png" alt=" " />
             </div>
             <div className="summaryleft">
               <u>Jeffrey Farrell</u> is a 4th year electrical engineering
@@ -80,7 +84,7 @@ class Info extends Component {
           </div>
           <div className="barright">
             <div className="profilepic">
-              <img className="profilepicimg" src="/tomato.png" alt=" " />
+              <img className="profilepicimg" src="./tomato.png" alt=" " />
             </div>
             <div className="summaryright">
               <u>Kirk D'Mello</u> is a fourth-year Electrical Engineering
@@ -94,7 +98,7 @@ class Info extends Component {
           </div>
           <div className="barleft">
             <div className="profilepic">
-              <img className="profilepicimg" src="/tomato.png" alt=" " />
+              <img className="profilepicimg" src="./corn.png" alt=" " />
             </div>
             <div className="summaryleft">
               <u>Paul Formanek</u> Lorem ipsum dolor sit amet, consectetur
@@ -109,22 +113,20 @@ class Info extends Component {
           </div>
           <div className="barright">
             <div className="profilepic">
-              <img className="profilepicimg" src="/tomato.png" alt=" " />
+              <img className="profilepicimg" src="./jessecao.png" alt=" " />
             </div>
             <div className="summaryright">
-              <u>Jesse Cao</u> Lorem ipsum dolor sit amet, consectetur
-              adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat. Duis aute irure dolor in reprehenderit in voluptate
-              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-              occaecat cupidatat non proident, sunt in culpa qui officia
-              deserunt mollit anim id est laborum.
+              <u>Jesse Cao</u> is a fourth-year electrical engineering student
+              at UVic who specializes in energy systems. His role in I-Tomato
+              includes the design and implementation of the system's automation,
+              which includes the cooling, lighting, and dehumidifying state
+              machines. He is also assisting in the electrical installation, and
+              wiring, as well as the power management aspect of the system.
             </div>
           </div>
           <div className="barleft">
             <div className="profilepic">
-              <img className="profilepicimg" src="/tomato.png" alt=" " />
+              <img className="profilepicimg" src="./leafy.png" alt=" " />
             </div>
             <div className="summaryleft">
               <u>Kevin Cao</u> Lorem ipsum dolor sit amet, consectetur
