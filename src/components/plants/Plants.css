@@ -94,3 +94,83 @@
 .rv-xy-plot__axis__title text {
   font-size: 14px;
 }
+
+@media only screen and (max-width: 600px) {
+  .plants {
+    flex-direction: column;
+  }
+
+  .controlbox {
+    height: auto;
+    background-color: #555;
+  }
+
+  .pannelleft {
+    height: 50%;
+    width: 100%;
+  }
+  .pannelright {
+    height: 50%;
+    width: 100%;
+  }
+  .stats {
+    font-size: small;
+    overflow: hidden;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+  }
+
+  .stats hr {
+    margin-block-start: 0.1em;
+    margin-block-end: 0.1em;
+  }
+
+  .statstitle {
+    width: 10%;
+  }
+  .statsdata {
+    width: 50%;
+  }
+
+  .graphbuttons {
+    width: 30%;
+    height: 100%;
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: space-around;
+  }
+
+  .graphbutton {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: space-around;
+    width: 40%;
+    height: 4em;
+    margin: 0.2em;
+    background-color: #333;
+    border-radius: 15% 15% 15% 15%;
+    text-align: center;
+    vertical-align: middle;
+    font-size: small;
+  }
+
+  .graphbox {
+    height: 100%;
+    width: 100%;
+  }
+}

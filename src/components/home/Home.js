@@ -78,29 +78,29 @@ const humidData = [
 ];
 
 const waterData = [
-  { x: 1, y: 0.1 },
-  { x: 2, y: 0.1 },
-  { x: 3, y: 0.9 },
-  { x: 4, y: 0.95 },
-  { x: 5, y: 0.9 },
-  { x: 6, y: 0.8 },
-  { x: 7, y: 0.5 },
-  { x: 8, y: 0.3 },
-  { x: 9, y: 0.2 },
-  { x: 10, y: 0.1 }
+  { x: 1, y: 10 },
+  { x: 2, y: 10 },
+  { x: 3, y: 90 },
+  { x: 4, y: 95 },
+  { x: 5, y: 90 },
+  { x: 6, y: 80 },
+  { x: 7, y: 50 },
+  { x: 8, y: 30 },
+  { x: 9, y: 20 },
+  { x: 10, y: 10 }
 ];
 
 const waterLine = [
-  { x: 1, y: 0.25 },
-  { x: 2, y: 0.25 },
-  { x: 3, y: 0.25 },
-  { x: 4, y: 0.25 },
-  { x: 5, y: 0.25 },
-  { x: 6, y: 0.25 },
-  { x: 7, y: 0.25 },
-  { x: 8, y: 0.25 },
-  { x: 9, y: 0.25 },
-  { x: 10, y: 0.25 }
+  { x: 1, y: 25 },
+  { x: 2, y: 25 },
+  { x: 3, y: 25 },
+  { x: 4, y: 25 },
+  { x: 5, y: 25 },
+  { x: 6, y: 25 },
+  { x: 7, y: 25 },
+  { x: 8, y: 25 },
+  { x: 9, y: 25 },
+  { x: 10, y: 25 }
 ];
 
 const photos = ["./tomato.png", "./corn.png", "./carrot.png", "./leafy.png"];
@@ -211,7 +211,7 @@ class Home extends Component {
           <div className="mobileplant">
             <img src="./carrot.png" alt="" className="mobileicon" />
             <DiscreteColorLegend
-              items={[{ title: "Carrot", color: "#FF9500" }]}
+              items={[{ title: "Carrot", color: "#FF6B00" }]}
             />
             15.9°C
             <br />
@@ -229,7 +229,11 @@ class Home extends Component {
         </div>
         <div className="mobiletemp">
           {this.props.drawgraphs && (
-            <FlexibleXYPlot colorType="literal" className="mobiletempgraph">
+            <FlexibleXYPlot
+              colorType="literal"
+              className="mobiletempgraph"
+              yDomain={[10, 25]}
+            >
               <ChartLabel
                 text="Temperature [°C]"
                 className="alt-y-label-temp"
@@ -256,7 +260,7 @@ class Home extends Component {
               <LineSeries
                 className="line-series"
                 data={tempData3}
-                color="#FF9500"
+                color="#FF6B00"
               />
               <LineSeries
                 className="line-series"
@@ -268,7 +272,7 @@ class Home extends Component {
         </div>
         <div className="mobilemoisture">
           {this.props.drawgraphs && (
-            <FlexibleXYPlot className="mobilemoisturegraph" yDomain={[0, 1]}>
+            <FlexibleXYPlot className="mobilemoisturegraph" yDomain={[0, 100]}>
               <XAxis />
               <YAxis />
               <LineSeries
@@ -286,7 +290,7 @@ class Home extends Component {
                 className="line-series"
                 data={waterData}
                 getY={d => d.y * 0.3 + 0.1}
-                color="#FF9500"
+                color="#FF6B00"
               />
               <LineSeries
                 className="line-series"
@@ -333,7 +337,7 @@ class Home extends Component {
           <div className="home">
             {this.column(photos[0], status[0], waterData, projection[0])}
             {this.column(photos[1], status[1], waterData, projection[1])}
-            {this.column(photos[1], status[2], waterData, projection[2])}
+            {this.column(photos[2], status[2], waterData, projection[2])}
             {this.column(photos[3], status[3], waterData, projection[3])}
           </div>
         );

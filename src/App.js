@@ -19,14 +19,14 @@ class App extends Component {
     var data = itomatoGetData();
     data.then(data => this.setState({ data: data }));
     var size = document.getElementsByClassName("App")[0].clientWidth;
-    if (size <= 768) {
+    if (size <= 600) {
       this.setState({ ismobile: true });
     }
   }
 
   updateWindowSize = () => {
     var size = document.getElementsByClassName("App")[0].clientWidth;
-    if (size <= 768) {
+    if (size <= 600) {
       this.setState({ ismobile: true });
     } else {
       this.setState({ ismobile: false });

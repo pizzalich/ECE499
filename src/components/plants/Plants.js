@@ -79,7 +79,8 @@ class Plants extends Component {
       temphint: false,
       temppoint: false,
       moisthint: false,
-      moistpoint: false
+      moistpoint: false,
+      showgraph: "temp"
     };
   }
 
@@ -106,241 +107,287 @@ class Plants extends Component {
                 <hr />
                 <div className="statsdata">
                   Temperature: 16°C <br />
-                  <br />
+                  {!this.props.ismobile && <br />}
                   Humidity: 67% <br />
-                  <br />
+                  {!this.props.ismobile && <br />}
                   Sunlight Last 24h: 16 Hours <br />
-                  <br />
+                  {!this.props.ismobile && <br />}
                   Time Remaining: 42 Days
                   <br />
-                  <br />
+                  {!this.props.ismobile && <br />}
                   Fan Status: Off
                   <br />
-                  <br />
+                  {!this.props.ismobile && <br />}
                   Water Pump Status: Off
                 </div>
-                <hr />
-                <div className="statuslegend">
-                  <DiscreteColorLegend
-                    items={[
-                      { title: "Fan Status", color: "#FFAA33" },
-                      { title: "Pump Status", color: "aqua" }
-                    ]}
-                  />
-                </div>
+                {this.props.ismobile && (
+                  <div className="graphbuttons">
+                    <div
+                      className="graphbutton"
+                      onClick={e => {
+                        this.setState({ showgraph: "temp" });
+                      }}
+                    >
+                      °C
+                    </div>
+                    <div
+                      className="graphbutton"
+                      onClick={e => {
+                        this.setState({ showgraph: "pump" });
+                      }}
+                    >
+                      I/O
+                    </div>
+                    <div
+                      className="graphbutton"
+                      onClick={e => {
+                        this.setState({ showgraph: "moist" });
+                      }}
+                    >
+                      {/* eslint-disable-next-line */}
+                      <span role="img">💦</span>
+                    </div>
+                    <div
+                      className="graphbutton"
+                      onClick={e => {
+                        this.setState({ showgraph: "sun" });
+                      }}
+                    >
+                      {/* eslint-disable-next-line */}
+                      <span role="img">🌞</span>
+                    </div>
+                  </div>
+                )}
+                {!this.props.ismobile && (
+                  <div className="statuslegend">
+                    <DiscreteColorLegend
+                      items={[
+                        { title: "Fan Status", color: "#FFAA33" },
+                        { title: "Pump Status", color: "aqua" }
+                      ]}
+                    />
+                  </div>
+                )}
               </div>
-              <div className="buttons" />
             </div>
           </div>
           <div className="pannelright">
-            <div className="graphbox">
-              <FlexibleXYPlot xType="time" colorType="literal">
-                <ChartLabel
-                  text="Soil Moisture Level [%]"
-                  className="alt-y-label-moist"
-                  includeMargin={false}
-                  xPercent={0.06}
-                  yPercent={0.06}
-                  style={{
-                    transform: "rotate(-90)",
-                    textAnchor: "end",
-                    fontSize: "12"
-                  }}
-                />
-                <VerticalBarSeries
-                  className="area-series"
-                  data={waterData}
-                  color="aqua"
-                  onValueMouseOut={(datapoint, event) => {
-                    this.setState({ moisthint: false });
-                  }}
-                  onValueMouseOver={(datapoint, event) => {
-                    this.setState({ moisthint: true, moistpoint: datapoint });
-                  }}
-                  onValueClick={(datapoint, event) => {
-                    this.setState({ moisthint: true, moistpoint: datapoint });
-                  }}
-                />
-                <LineSeries
-                  className="line-series"
-                  strokeStyle="dashed"
-                  data={waterLine}
-                  color="grey"
-                />
-                {this.state.moisthint && (
-                  <Hint value={this.state.moistpoint}>
-                    <div className="moisttooltip">
-                      <p>{this.state.moistpoint.y + "%"}</p>
-                    </div>
-                  </Hint>
-                )}
-              </FlexibleXYPlot>
-            </div>
-            <div className="graphbox">
-              <FlexibleXYPlot>
-                <ChartLabel
-                  text="Temperature and Humidity [°C/%]"
-                  className="alt-y-label-temp"
-                  includeMargin={false}
-                  xPercent={0.0}
-                  yPercent={0.06}
-                  style={{
-                    transform: "rotate(-90)",
-                    textAnchor: "end",
-                    fontSize: "12"
-                  }}
-                />
-                <VerticalBarSeries
-                  className="humidity-series"
-                  data={humidData}
-                  color="FFAA33"
-                  onValueMouseOut={(datapoint, event) => {
-                    this.setState({ humhint: false });
-                  }}
-                  onValueMouseOver={(datapoint, event) => {
-                    this.setState({ humhint: true, humpoint: datapoint });
-                  }}
-                  onValueClick={(datapoint, event) => {
-                    this.setState({ humhint: true, humpoint: datapoint });
-                  }}
-                />
-                {this.state.humhint && (
-                  <Hint value={this.state.humpoint}>
-                    <div className="humtooltip">
-                      <p>{this.state.humpoint.y + "%"}</p>
-                    </div>
-                  </Hint>
-                )}
-                {this.state.temphint && (
-                  <Hint value={this.state.temppoint}>
-                    <div className="temptooltip">
-                      <p>{this.state.temppoint.y + "°C"}</p>
-                    </div>
-                  </Hint>
-                )}
-                <LineMarkSeries
-                  className="linemark-series"
-                  fill="grey"
-                  data={tempData}
-                  onValueMouseOut={(datapoint, event) => {
-                    this.setState({ temphint: false });
-                  }}
-                  onValueMouseOver={(datapoint, event) => {
-                    this.setState({ temphint: true, temppoint: datapoint });
-                  }}
-                  onValueClick={(datapoint, event) => {
-                    this.setState({ temphint: true, temppoint: datapoint });
-                  }}
-                />
-              </FlexibleXYPlot>
-            </div>
-            <div className="graphbox">
-              <FlexibleXYPlot yDomain={[-1, 5]} xDomain={[-0.1, 10]}>
-                <ChartLabel
-                  text="Pump and Fan Status [On/Off]"
-                  className="alt-y-label-pump"
-                  includeMargin={false}
-                  xPercent={0.0}
-                  yPercent={0.06}
-                  style={{
-                    transform: "rotate(-90)",
-                    textAnchor: "end",
-                    fontSize: "12"
-                  }}
-                />
-                <LineSeries
-                  className="pump-status"
-                  data={[
-                    { x: 1, y: 0 },
-                    { x: 2, y: 0 },
-                    { x: 2, y: 1 },
-                    { x: 3, y: 1 },
-                    { x: 3, y: 0 },
-                    { x: 6, y: 0 },
-                    { x: 7, y: 0 },
-                    { x: 8, y: 0 },
-                    { x: 9, y: 0 },
-                    { x: 10, y: 0 }
-                  ]}
-                  color={"aqua"}
-                />
-                <LineSeries
-                  className="fan-status"
-                  data={[
-                    { x: 1, y: 3 },
-                    { x: 2, y: 3 },
-                    { x: 3, y: 3 },
-                    { x: 3, y: 4 },
-                    { x: 4, y: 4 },
-                    { x: 5, y: 4 },
-                    { x: 6, y: 4 },
-                    { x: 7, y: 4 },
-                    { x: 7, y: 3 },
-                    { x: 8, y: 3 },
-                    { x: 9, y: 3 },
-                    { x: 10, y: 3 }
-                  ]}
-                  color={"#FFAA33"}
-                />
-              </FlexibleXYPlot>
-            </div>
-            <div className="graphbox">
-              <FlexibleXYPlot
-                xDomain={[-3, 3]}
-                yDomain={[-3, 3]}
-                colorType="literal"
-              >
-                <ChartLabel
-                  text="Sunlight Hours Per Day [h]"
-                  className="alt-y-label-light"
-                  includeMargin={false}
-                  xPercent={0.06}
-                  yPercent={0.06}
-                  style={{
-                    transform: "rotate(-90)",
-                    textAnchor: "end",
-                    fontSize: "12"
-                  }}
-                />
-                <ArcSeries
-                  radiusDomain={[0, 3]}
-                  onValueMouseOut={(datapoint, event) => {
-                    this.setState({ archint: false });
-                  }}
-                  onValueMouseOver={(datapoint, event) => {
-                    this.setState({ archint: true, arcpoint: datapoint });
-                  }}
-                  onValueClick={(datapoint, event) => {
-                    this.setState({ archint: true, arcpoint: datapoint });
-                  }}
-                  data={[
-                    {
-                      angle0: 0,
-                      angle: 1.4 * 3.14,
-                      radius: 2,
-                      radius0: 1,
-                      color: "#FFAA33",
-                      value: "16"
-                    },
-                    {
-                      angle0: 1.4 * 3.14,
-                      angle: 2 * 3.14,
-                      radius: 1.8,
-                      radius0: 1,
-                      color: "grey",
-                      value: "8"
-                    }
-                  ]}
-                />
-                {this.state.archint && (
-                  <Hint value={this.buildValue(this.state.arcpoint)}>
-                    <div className="arctooltip">
-                      <p>{this.state.arcpoint.value + "h"}</p>
-                    </div>
-                  </Hint>
-                )}
-              </FlexibleXYPlot>
-            </div>
+            {(!this.props.ismobile || this.state.showgraph === "moist") && (
+              <div className="graphbox">
+                <FlexibleXYPlot xType="time" colorType="literal">
+                  <ChartLabel
+                    text="Soil Moisture Level [%]"
+                    className="alt-y-label-moist"
+                    includeMargin={false}
+                    xPercent={0.06}
+                    yPercent={0.06}
+                    style={{
+                      transform: "rotate(-90)",
+                      textAnchor: "end",
+                      fontSize: "12"
+                    }}
+                  />
+                  <VerticalBarSeries
+                    className="area-series"
+                    data={waterData}
+                    color="aqua"
+                    onValueMouseOut={(datapoint, event) => {
+                      this.setState({ moisthint: false });
+                    }}
+                    onValueMouseOver={(datapoint, event) => {
+                      this.setState({ moisthint: true, moistpoint: datapoint });
+                    }}
+                    onValueClick={(datapoint, event) => {
+                      this.setState({ moisthint: true, moistpoint: datapoint });
+                    }}
+                  />
+                  <LineSeries
+                    className="line-series"
+                    strokeStyle="dashed"
+                    data={waterLine}
+                    color="grey"
+                  />
+                  {this.state.moisthint && (
+                    <Hint value={this.state.moistpoint}>
+                      <div className="moisttooltip">
+                        <p>{this.state.moistpoint.y + "%"}</p>
+                      </div>
+                    </Hint>
+                  )}
+                </FlexibleXYPlot>
+              </div>
+            )}
+            {(!this.props.ismobile || this.state.showgraph === "temp") && (
+              <div className="graphbox">
+                <FlexibleXYPlot>
+                  <ChartLabel
+                    text="Temperature and Humidity [°C/%]"
+                    className="alt-y-label-temp"
+                    includeMargin={false}
+                    xPercent={0.0}
+                    yPercent={0.06}
+                    style={{
+                      transform: "rotate(-90)",
+                      textAnchor: "end",
+                      fontSize: "12"
+                    }}
+                  />
+                  <VerticalBarSeries
+                    className="humidity-series"
+                    data={humidData}
+                    color="FFAA33"
+                    onValueMouseOut={(datapoint, event) => {
+                      this.setState({ humhint: false });
+                    }}
+                    onValueMouseOver={(datapoint, event) => {
+                      this.setState({ humhint: true, humpoint: datapoint });
+                    }}
+                    onValueClick={(datapoint, event) => {
+                      this.setState({ humhint: true, humpoint: datapoint });
+                    }}
+                  />
+                  {this.state.humhint && (
+                    <Hint value={this.state.humpoint}>
+                      <div className="humtooltip">
+                        <p>{this.state.humpoint.y + "%"}</p>
+                      </div>
+                    </Hint>
+                  )}
+                  {this.state.temphint && (
+                    <Hint value={this.state.temppoint}>
+                      <div className="temptooltip">
+                        <p>{this.state.temppoint.y + "°C"}</p>
+                      </div>
+                    </Hint>
+                  )}
+                  <LineMarkSeries
+                    className="linemark-series"
+                    fill="grey"
+                    data={tempData}
+                    onValueMouseOut={(datapoint, event) => {
+                      this.setState({ temphint: false });
+                    }}
+                    onValueMouseOver={(datapoint, event) => {
+                      this.setState({ temphint: true, temppoint: datapoint });
+                    }}
+                    onValueClick={(datapoint, event) => {
+                      this.setState({ temphint: true, temppoint: datapoint });
+                    }}
+                  />
+                </FlexibleXYPlot>
+              </div>
+            )}
+            {(!this.props.ismobile || this.state.showgraph === "pump") && (
+              <div className="graphbox">
+                <FlexibleXYPlot yDomain={[-1, 5]} xDomain={[-0.1, 10]}>
+                  <ChartLabel
+                    text="Pump and Fan Status [On/Off]"
+                    className="alt-y-label-pump"
+                    includeMargin={false}
+                    xPercent={0.0}
+                    yPercent={0.06}
+                    style={{
+                      transform: "rotate(-90)",
+                      textAnchor: "end",
+                      fontSize: "12"
+                    }}
+                  />
+                  <LineSeries
+                    className="pump-status"
+                    data={[
+                      { x: 1, y: 0 },
+                      { x: 2, y: 0 },
+                      { x: 2, y: 1 },
+                      { x: 3, y: 1 },
+                      { x: 3, y: 0 },
+                      { x: 6, y: 0 },
+                      { x: 7, y: 0 },
+                      { x: 8, y: 0 },
+                      { x: 9, y: 0 },
+                      { x: 10, y: 0 }
+                    ]}
+                    color={"aqua"}
+                  />
+                  <LineSeries
+                    className="fan-status"
+                    data={[
+                      { x: 1, y: 3 },
+                      { x: 2, y: 3 },
+                      { x: 3, y: 3 },
+                      { x: 3, y: 4 },
+                      { x: 4, y: 4 },
+                      { x: 5, y: 4 },
+                      { x: 6, y: 4 },
+                      { x: 7, y: 4 },
+                      { x: 7, y: 3 },
+                      { x: 8, y: 3 },
+                      { x: 9, y: 3 },
+                      { x: 10, y: 3 }
+                    ]}
+                    color={"#FFAA33"}
+                  />
+                </FlexibleXYPlot>
+              </div>
+            )}
+            {(!this.props.ismobile || this.state.showgraph === "sun") && (
+              <div className="graphbox">
+                <FlexibleXYPlot
+                  xDomain={[-3, 3]}
+                  yDomain={[-3, 3]}
+                  colorType="literal"
+                >
+                  <ChartLabel
+                    text="Sunlight Hours Per Day [h]"
+                    className="alt-y-label-light"
+                    includeMargin={false}
+                    xPercent={0.06}
+                    yPercent={0.06}
+                    style={{
+                      transform: "rotate(-90)",
+                      textAnchor: "end",
+                      fontSize: "12"
+                    }}
+                  />
+                  <ArcSeries
+                    radiusDomain={[0, 3]}
+                    onValueMouseOut={(datapoint, event) => {
+                      this.setState({ archint: false });
+                    }}
+                    onValueMouseOver={(datapoint, event) => {
+                      this.setState({ archint: true, arcpoint: datapoint });
+                    }}
+                    onValueClick={(datapoint, event) => {
+                      this.setState({ archint: true, arcpoint: datapoint });
+                    }}
+                    data={[
+                      {
+                        angle0: 0,
+                        angle: 1.4 * 3.14,
+                        radius: 2,
+                        radius0: 1,
+                        color: "#FFAA33",
+                        value: "16"
+                      },
+                      {
+                        angle0: 1.4 * 3.14,
+                        angle: 2 * 3.14,
+                        radius: 1.8,
+                        radius0: 1,
+                        color: "grey",
+                        value: "8"
+                      }
+                    ]}
+                  />
+                  {this.state.archint && (
+                    <Hint value={this.buildValue(this.state.arcpoint)}>
+                      <div className="arctooltip">
+                        <p>{this.state.arcpoint.value + "h"}</p>
+                      </div>
+                    </Hint>
+                  )}
+                </FlexibleXYPlot>
+              </div>
+            )}
           </div>
         </div>
       );
