@@ -7,7 +7,7 @@ class Login extends Component {
       return (
         <div className="login">
           {/* eslint-disable-next-line */}
-          <span>👌🍅👌</span>
+          <span>Website built by Marc Bonwick👌🍅👌Likefollowsubscribe!</span> 
         </div>
       );
     } else {
