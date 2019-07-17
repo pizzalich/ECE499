@@ -36,10 +36,10 @@
 .graph {
   height: 20%;
   color: rgba(150, 150, 150, 1);
-  font-size: 0.5em;
+  font-size: 0.7em;
   background-color: #444;
   padding-bottom: 0%;
-  border-radius: 15%;
+  border-radius: 10%;
 }
 
 .projection {
@@ -73,4 +73,61 @@
 
 .details:hover {
   color: #3af;
+}
+
+.mobilesummary {
+  display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox; /* TWEENER - IE 10 */
+  display: -webkit-flex; /* NEW - Chrome */
+  display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+  background-color: #333;
+  height: 100%;
+  width: auto;
+  flex-direction: column;
+}
+
+.mobiledata {
+  height: 25%;
+  width: 100%;
+  display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox; /* TWEENER - IE 10 */
+  display: -webkit-flex; /* NEW - Chrome */
+  display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+  flex-direction: row;
+}
+
+.mobileplant {
+  height: 100%;
+  width: 25%;
+  display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox; /* TWEENER - IE 10 */
+  display: -webkit-flex; /* NEW - Chrome */
+  display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+  flex-direction: column;
+  color: white;
+  font-size: smaller;
+}
+
+.mobileicon {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mobiletemp {
+  height: 35%;
+  width: 100%;
+}
+
+.mobilemoisture {
+  height: 35%;
+  width: 100%;
+}
+
+.mobilebutton {
+  height: 5%;
+  width: 100%;
 }

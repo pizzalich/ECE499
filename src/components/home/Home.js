@@ -1,29 +1,67 @@
 import React, { Component } from "react";
 import {
   FlexibleXYPlot,
-  ChartLabel,
   VerticalBarSeries,
   LineMarkSeries,
   LineSeries,
+  ChartLabel,
   XAxis,
-  YAxis
+  YAxis,
+  DiscreteColorLegend
 } from "react-vis";
 import "./Home.css";
 import "../../../node_modules/react-vis/dist/style.css";
 
-const tempData = [
-  { x: 1, y: 1.25, color: "#FFAA33" },
-  { x: 2, y: 1.75, color: "#FFAA33" },
-  { x: 3, y: 2.11, color: "#FFAA33" },
-  { x: 4, y: 2.25, color: "#FFAA33" },
-  { x: 5, y: 2.11, color: "#FFAA33" },
-  { x: 6, y: 1.75, color: "#FFAA33" },
-  { x: 7, y: 1.25, color: "#FFAA33" },
-  { x: 8, y: 0.75, color: "#33A2FF" },
-  { x: 9, y: 0.38, color: "#33A2FF" },
-  { x: 10, y: 0.25, color: "#33A2FF" },
-  { x: 11, y: 0.38, color: "#33A2FF" },
-  { x: 12, y: 0.75, color: "#33A2FF" }
+const tempData1 = [
+  { x: 1, y: 15.9 },
+  { x: 2, y: 14.8 },
+  { x: 3, y: 15.3 },
+  { x: 4, y: 18.1 },
+  { x: 5, y: 20 },
+  { x: 6, y: 18.9 },
+  { x: 7, y: 16.2 },
+  { x: 8, y: 14.9 },
+  { x: 9, y: 14.4 },
+  { x: 10, y: 15.5 }
+];
+
+const tempData2 = [
+  { x: 1, y: 17.1 },
+  { x: 2, y: 15.5 },
+  { x: 3, y: 14.8 },
+  { x: 4, y: 12.4 },
+  { x: 5, y: 15.3 },
+  { x: 6, y: 18.1 },
+  { x: 7, y: 18.9 },
+  { x: 8, y: 16.2 },
+  { x: 9, y: 13.3 },
+  { x: 10, y: 12.1 }
+];
+
+const tempData3 = [
+  { x: 1, y: 14.3 },
+  { x: 2, y: 14 },
+  { x: 3, y: 16.8 },
+  { x: 4, y: 17.9 },
+  { x: 5, y: 19.4 },
+  { x: 6, y: 17 },
+  { x: 7, y: 14.6 },
+  { x: 8, y: 13.6 },
+  { x: 9, y: 16.9 },
+  { x: 10, y: 18.1 }
+];
+
+const tempData4 = [
+  { x: 1, y: 14.2 },
+  { x: 2, y: 16.9 },
+  { x: 3, y: 17.6 },
+  { x: 4, y: 16.7 },
+  { x: 5, y: 14.3 },
+  { x: 6, y: 13 },
+  { x: 7, y: 16.7 },
+  { x: 8, y: 18.6 },
+  { x: 9, y: 20.2 },
+  { x: 10, y: 18.5 }
 ];
 
 const humidData = [
@@ -36,17 +74,15 @@ const humidData = [
   { x: 7, y: 0.25 },
   { x: 8, y: 0.25 },
   { x: 9, y: 0.22 },
-  { x: 10, y: 0.25 },
-  { x: 11, y: 0.32 },
-  { x: 12, y: 0.25 }
+  { x: 10, y: 0.25 }
 ];
 
 const waterData = [
   { x: 1, y: 0.1 },
   { x: 2, y: 0.1 },
-  { x: 3, y: 1 },
-  { x: 4, y: 1 },
-  { x: 5, y: 1 },
+  { x: 3, y: 0.9 },
+  { x: 4, y: 0.95 },
+  { x: 5, y: 0.9 },
   { x: 6, y: 0.8 },
   { x: 7, y: 0.5 },
   { x: 8, y: 0.3 },
@@ -67,12 +103,7 @@ const waterLine = [
   { x: 10, y: 0.25 }
 ];
 
-const photos = [
-  "https://media.istockphoto.com/photos/tomato-isolated-on-white-background-picture-id466175630",
-  "https://cdn.gearpatrol.com/wp-content/uploads/2019/01/10-Best-Indoor-Plants-Gear-Patrol-zizi.jpg",
-  "https://pbs.twimg.com/profile_images/557309805795483649/0gK8qnyv_400x400.jpeg",
-  "https://media.idownloadblog.com/wp-content/uploads/2018/07/Apple-logo-black-and-white-768x895.png"
-];
+const photos = ["./tomato.png", "./corn.png", "./carrot.png", "./leafy.png"];
 
 const status = ["good", "dry", "dead", "wet"];
 
@@ -130,8 +161,13 @@ class Home extends Component {
                 className="humidity-series"
                 data={humidData}
                 color="#FFAA33"
+                getY={d => d.y * 20}
               />
-              <LineMarkSeries className="linemark-series" data={tempData} />
+              <LineMarkSeries
+                className="linemark-series"
+                data={tempData1}
+                fill="grey"
+              />
             </FlexibleXYPlot>
           )}
         </div>
@@ -150,16 +186,160 @@ class Home extends Component {
     );
   };
 
+  mobileSummary = () => {
+    return (
+      <div className="mobilesummary">
+        <div className="mobiledata">
+          <div className="mobileplant">
+            <img src="./tomato.png" alt="" className="mobileicon" />
+            <DiscreteColorLegend
+              items={[{ title: "Tomato", color: "#FF4433" }]}
+            />
+            15.9°C
+            <br />
+            Moisture: 43%
+          </div>
+          <div className="mobileplant">
+            <img src="./corn.png" alt="" className="mobileicon" />
+            <DiscreteColorLegend
+              items={[{ title: "Corn", color: "#FFAA33" }]}
+            />
+            15.9°C
+            <br />
+            Moisture: 43%
+          </div>
+          <div className="mobileplant">
+            <img src="./carrot.png" alt="" className="mobileicon" />
+            <DiscreteColorLegend
+              items={[{ title: "Carrot", color: "#FF9500" }]}
+            />
+            15.9°C
+            <br />
+            Moisture: 43%
+          </div>
+          <div className="mobileplant">
+            <img src="./leafy.png" alt="" className="mobileicon" />
+            <DiscreteColorLegend
+              items={[{ title: "Greens", color: "#33FFAA" }]}
+            />
+            15.9°C
+            <br />
+            Moisture: 43%
+          </div>
+        </div>
+        <div className="mobiletemp">
+          {this.props.drawgraphs && (
+            <FlexibleXYPlot colorType="literal" className="mobiletempgraph">
+              <ChartLabel
+                text="Temperature [°C]"
+                className="alt-y-label-temp"
+                includeMargin={false}
+                xPercent={0.02}
+                yPercent={0.06}
+                style={{
+                  textAnchor: "start",
+                  fontSize: "12"
+                }}
+              />
+              <XAxis />
+              <YAxis />
+              <LineSeries
+                className="line-series"
+                data={tempData1}
+                color="#FF4433"
+              />
+              <LineSeries
+                className="line-series"
+                data={tempData2}
+                color="#FFAA33"
+              />
+              <LineSeries
+                className="line-series"
+                data={tempData3}
+                color="#FF9500"
+              />
+              <LineSeries
+                className="line-series"
+                data={tempData4}
+                color="#33FFAA"
+              />
+            </FlexibleXYPlot>
+          )}
+        </div>
+        <div className="mobilemoisture">
+          {this.props.drawgraphs && (
+            <FlexibleXYPlot className="mobilemoisturegraph" yDomain={[0, 1]}>
+              <XAxis />
+              <YAxis />
+              <LineSeries
+                className="line-series"
+                data={waterData}
+                color="#FF4433"
+              />
+              <LineSeries
+                className="line-series"
+                data={waterData}
+                getY={d => d.y * 0.5 + 0.1}
+                color="#FFAA33"
+              />
+              <LineSeries
+                className="line-series"
+                data={waterData}
+                getY={d => d.y * 0.3 + 0.1}
+                color="#FF9500"
+              />
+              <LineSeries
+                className="line-series"
+                data={waterData}
+                getY={d => d.y * 0.4 + 0.1}
+                color="#33FFAA"
+              />
+              <LineSeries
+                className="line-series"
+                strokeStyle="dashed"
+                data={waterLine}
+                color="grey"
+              />
+              <ChartLabel
+                text="Soil Moisture [%]"
+                className="alt-y-label-temp"
+                includeMargin={false}
+                xPercent={0.02}
+                yPercent={0.06}
+                style={{
+                  textAnchor: "start",
+                  fontSize: "12"
+                }}
+              />
+            </FlexibleXYPlot>
+          )}
+        </div>
+        <div className="mobilebutton">
+          <div
+            className="details"
+            onClick={() => this.props.changeActiveComponent("plants")}
+          >
+            <div className="detailslink">Details</div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   render() {
     if (this.props.page === "home") {
-      return (
-        <div className="home">
-          {this.column(photos[0], status[0], waterData, projection[0])}
-          {this.column(photos[1], status[1], waterData, projection[1])}
-          {this.column(photos[1], status[2], waterData, projection[2])}
-          {this.column(photos[3], status[3], waterData, projection[3])}
-        </div>
-      );
+      if (!this.props.ismobile) {
+        return (
+          <div className="home">
+            {this.column(photos[0], status[0], waterData, projection[0])}
+            {this.column(photos[1], status[1], waterData, projection[1])}
+            {this.column(photos[1], status[2], waterData, projection[2])}
+            {this.column(photos[3], status[3], waterData, projection[3])}
+          </div>
+        );
+      } else {
+        return this.mobileSummary();
+      }
     } else {
       return null;
     }
