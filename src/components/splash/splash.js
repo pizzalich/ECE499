@@ -28,7 +28,7 @@ class Splash extends Component {
             <div>
               Welcome to I-tomato
               <br />
-              This site contains a demo of the I-Tomato web app <br />
+              This site contains a demo of the I-Tomato web app. <br />
               Please either continue to:
               <br />
               <div className="spacersplash" />
