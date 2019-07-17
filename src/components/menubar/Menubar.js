@@ -9,13 +9,13 @@ class Menubar extends Component {
           className="button"
           onClick={() => this.props.changeActiveComponent("home")}
         >
-          Home
+          Summary
         </div>
         <div
           className="button"
           onClick={() => this.props.changeActiveComponent("plants")}
         >
-          Plants
+          Details
         </div>
         <div
           className="button"

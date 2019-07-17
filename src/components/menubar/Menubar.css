@@ -12,7 +12,7 @@
 .button {
   background-color: #3d3d3d;
   height: 1em;
-  width: 5%;
+  width: 17%;
   padding: 1em;
   color: white;
 }
@@ -31,10 +31,6 @@
   width: 5%;
   padding: 1em;
   color: white;
-}
-
-.icon:hover {
-  background-color: #333;
 }
 
 .iconimg {
