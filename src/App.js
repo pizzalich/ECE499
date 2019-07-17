@@ -11,13 +11,27 @@ import "./App.css";
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { page: "home", drawgraphs: false };
+    this.state = { page: "home", drawgraphs: false, ismobile: false };
   }
 
   componentDidMount() {
+    window.addEventListener("resize", this.updateWindowSize);
     var data = itomatoGetData();
     data.then(data => this.setState({ data: data }));
+    var size = document.getElementsByClassName("App")[0].clientWidth;
+    if (size <= 768) {
+      this.setState({ ismobile: true });
+    }
   }
+
+  updateWindowSize = () => {
+    var size = document.getElementsByClassName("App")[0].clientWidth;
+    if (size <= 768) {
+      this.setState({ ismobile: true });
+    } else {
+      this.setState({ ismobile: false });
+    }
+  };
 
   changeActiveComponent = data => {
     this.setState({ page: data });
@@ -33,16 +47,18 @@ class App extends Component {
         <Splash
           changeActiveComponent={this.changeActiveComponent}
           changeDrawGraphs={this.changeDrawGraphs}
+          ismobile={this.state.ismobile}
         />
         <Menubar changeActiveComponent={this.changeActiveComponent} />
         <Home
           page={this.state.page}
           drawgraphs={this.state.drawgraphs}
           changeActiveComponent={this.changeActiveComponent}
+          ismobile={this.state.ismobile}
         />
-        <Info page={this.state.page} />
+        <Info page={this.state.page} ismobile={this.state.ismobile} />
         <Login page={this.state.page} />
-        <Plants page={this.state.page} />
+        <Plants page={this.state.page} ismobile={this.state.ismobile} />
       </div>
     );
   }
