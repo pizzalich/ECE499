@@ -5,7 +5,9 @@ import {
   LineMarkSeries,
   ArcSeries,
   LineSeries,
-  ChartLabel
+  ChartLabel,
+  Hint,
+  DiscreteColorLegend
 } from "react-vis";
 import "./Plants.css";
 import "../../../node_modules/react-vis/dist/style.css";
@@ -67,17 +69,36 @@ const waterLine = [
 ];
 
 class Plants extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      archint: false,
+      arcpoint: false,
+      humhint: false,
+      humpoint: false,
+      temphint: false,
+      temppoint: false,
+      moisthint: false,
+      moistpoint: false
+    };
+  }
+
+  buildValue(hoveredCell) {
+    const { radius, angle, angle0 } = hoveredCell;
+    const truedAngle = (angle + angle0) / 2;
+    return {
+      x: radius * Math.cos(truedAngle),
+      y: radius * Math.sin(truedAngle)
+    };
+  }
+
   render() {
     if (this.props.page === "plants") {
       return (
         <div className="plants">
           <div className="pannelleft">
             <div className="feedbox">
-              <img
-                src="https://cdn.gearpatrol.com/wp-content/uploads/2019/01/10-Best-Indoor-Plants-Gear-Patrol-zizi.jpg"
-                alt="Plant 1"
-                className="thumbnail"
-              />
+              <img src="./tomato.png" alt="Plant 1" className="thumbnail" />
             </div>
             <div className="controlbox">
               <div className="stats">
@@ -99,6 +120,14 @@ class Plants extends Component {
                   Water Pump Status: Off
                 </div>
                 <hr />
+                <div className="statuslegend">
+                  <DiscreteColorLegend
+                    items={[
+                      { title: "Fan Status", color: "#FFAA33" },
+                      { title: "Pump Status", color: "aqua" }
+                    ]}
+                  />
+                </div>
               </div>
               <div className="buttons" />
             </div>
@@ -107,20 +136,30 @@ class Plants extends Component {
             <div className="graphbox">
               <FlexibleXYPlot xType="time" colorType="literal">
                 <ChartLabel
-                  text="Soil Moisture Level"
-                  className="alt-y-label"
+                  text="Soil Moisture Level [%]"
+                  className="alt-y-label-moist"
                   includeMargin={false}
                   xPercent={0.06}
                   yPercent={0.06}
                   style={{
                     transform: "rotate(-90)",
-                    textAnchor: "end"
+                    textAnchor: "end",
+                    fontSize: "12"
                   }}
                 />
                 <VerticalBarSeries
                   className="area-series"
                   data={waterData}
                   color="aqua"
+                  onValueMouseOut={(datapoint, event) => {
+                    this.setState({ moisthint: false });
+                  }}
+                  onValueMouseOver={(datapoint, event) => {
+                    this.setState({ moisthint: true, moistpoint: datapoint });
+                  }}
+                  onValueClick={(datapoint, event) => {
+                    this.setState({ moisthint: true, moistpoint: datapoint });
+                  }}
                 />
                 <LineSeries
                   className="line-series"
@@ -128,61 +167,120 @@ class Plants extends Component {
                   data={waterLine}
                   color="grey"
                 />
+                {this.state.moisthint && (
+                  <Hint value={this.state.moistpoint}>
+                    <div className="moisttooltip">
+                      <p>{this.state.moistpoint.y + "%"}</p>
+                    </div>
+                  </Hint>
+                )}
               </FlexibleXYPlot>
             </div>
             <div className="graphbox">
               <FlexibleXYPlot>
                 <ChartLabel
-                  text="Temperature and Humidity"
-                  className="alt-y-label"
+                  text="Temperature and Humidity [°C/%]"
+                  className="alt-y-label-temp"
                   includeMargin={false}
                   xPercent={0.0}
                   yPercent={0.06}
                   style={{
                     transform: "rotate(-90)",
-                    textAnchor: "end"
+                    textAnchor: "end",
+                    fontSize: "12"
                   }}
                 />
                 <VerticalBarSeries
                   className="humidity-series"
                   data={humidData}
                   color="FFAA33"
+                  onValueMouseOut={(datapoint, event) => {
+                    this.setState({ humhint: false });
+                  }}
+                  onValueMouseOver={(datapoint, event) => {
+                    this.setState({ humhint: true, humpoint: datapoint });
+                  }}
+                  onValueClick={(datapoint, event) => {
+                    this.setState({ humhint: true, humpoint: datapoint });
+                  }}
                 />
-                <LineMarkSeries className="linemark-series" data={tempData} />
+                {this.state.humhint && (
+                  <Hint value={this.state.humpoint}>
+                    <div className="humtooltip">
+                      <p>{this.state.humpoint.y + "%"}</p>
+                    </div>
+                  </Hint>
+                )}
+                {this.state.temphint && (
+                  <Hint value={this.state.temppoint}>
+                    <div className="temptooltip">
+                      <p>{this.state.temppoint.y + "°C"}</p>
+                    </div>
+                  </Hint>
+                )}
+                <LineMarkSeries
+                  className="linemark-series"
+                  fill="grey"
+                  data={tempData}
+                  onValueMouseOut={(datapoint, event) => {
+                    this.setState({ temphint: false });
+                  }}
+                  onValueMouseOver={(datapoint, event) => {
+                    this.setState({ temphint: true, temppoint: datapoint });
+                  }}
+                  onValueClick={(datapoint, event) => {
+                    this.setState({ temphint: true, temppoint: datapoint });
+                  }}
+                />
               </FlexibleXYPlot>
             </div>
             <div className="graphbox">
-              <FlexibleXYPlot>
+              <FlexibleXYPlot yDomain={[-1, 5]} xDomain={[-0.1, 10]}>
                 <ChartLabel
-                  text="Tomato Color Change"
-                  className="alt-y-label"
+                  text="Pump and Fan Status [On/Off]"
+                  className="alt-y-label-pump"
                   includeMargin={false}
                   xPercent={0.0}
                   yPercent={0.06}
                   style={{
                     transform: "rotate(-90)",
-                    textAnchor: "end"
+                    textAnchor: "end",
+                    fontSize: "12"
                   }}
                 />
                 <LineSeries
-                  className="first-series"
+                  className="pump-status"
                   data={[
-                    { x: 1, y: 3 },
-                    { x: 2, y: 5 },
-                    { x: 3, y: 15 },
-                    { x: 4, y: 12 }
+                    { x: 1, y: 0 },
+                    { x: 2, y: 0 },
+                    { x: 2, y: 1 },
+                    { x: 3, y: 1 },
+                    { x: 3, y: 0 },
+                    { x: 6, y: 0 },
+                    { x: 7, y: 0 },
+                    { x: 8, y: 0 },
+                    { x: 9, y: 0 },
+                    { x: 10, y: 0 }
                   ]}
-                  color={"#FFAA33"}
+                  color={"aqua"}
                 />
                 <LineSeries
-                  className="third-series"
-                  curve={"curveMonotoneX"}
+                  className="fan-status"
                   data={[
-                    { x: 1, y: 10 },
-                    { x: 2, y: 4 },
-                    { x: 3, y: 2 },
-                    { x: 4, y: 15 }
+                    { x: 1, y: 3 },
+                    { x: 2, y: 3 },
+                    { x: 3, y: 3 },
+                    { x: 3, y: 4 },
+                    { x: 4, y: 4 },
+                    { x: 5, y: 4 },
+                    { x: 6, y: 4 },
+                    { x: 7, y: 4 },
+                    { x: 7, y: 3 },
+                    { x: 8, y: 3 },
+                    { x: 9, y: 3 },
+                    { x: 10, y: 3 }
                   ]}
+                  color={"#FFAA33"}
                 />
               </FlexibleXYPlot>
             </div>
@@ -193,35 +291,54 @@ class Plants extends Component {
                 colorType="literal"
               >
                 <ChartLabel
-                  text="Sunlight Hours Per Day"
-                  className="alt-y-label"
+                  text="Sunlight Hours Per Day [h]"
+                  className="alt-y-label-light"
                   includeMargin={false}
                   xPercent={0.06}
                   yPercent={0.06}
                   style={{
                     transform: "rotate(-90)",
-                    textAnchor: "end"
+                    textAnchor: "end",
+                    fontSize: "12"
                   }}
                 />
                 <ArcSeries
                   radiusDomain={[0, 3]}
+                  onValueMouseOut={(datapoint, event) => {
+                    this.setState({ archint: false });
+                  }}
+                  onValueMouseOver={(datapoint, event) => {
+                    this.setState({ archint: true, arcpoint: datapoint });
+                  }}
+                  onValueClick={(datapoint, event) => {
+                    this.setState({ archint: true, arcpoint: datapoint });
+                  }}
                   data={[
                     {
                       angle0: 0,
                       angle: 1.4 * 3.14,
                       radius: 2,
                       radius0: 1,
-                      color: "#FFAA33"
+                      color: "#FFAA33",
+                      value: "16"
                     },
                     {
                       angle0: 1.4 * 3.14,
                       angle: 2 * 3.14,
                       radius: 1.8,
                       radius0: 1,
-                      color: "grey"
+                      color: "grey",
+                      value: "8"
                     }
                   ]}
                 />
+                {this.state.archint && (
+                  <Hint value={this.buildValue(this.state.arcpoint)}>
+                    <div className="arctooltip">
+                      <p>{this.state.arcpoint.value + "h"}</p>
+                    </div>
+                  </Hint>
+                )}
               </FlexibleXYPlot>
             </div>
           </div>
