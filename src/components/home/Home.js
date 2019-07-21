@@ -9,99 +9,9 @@ import {
   YAxis,
   DiscreteColorLegend
 } from "react-vis";
+import tempData from "../../data/data.js";
 import "./Home.css";
 import "../../../node_modules/react-vis/dist/style.css";
-
-const tempData1 = [
-  { x: 1, y: 15.9 },
-  { x: 2, y: 14.8 },
-  { x: 3, y: 15.3 },
-  { x: 4, y: 18.1 },
-  { x: 5, y: 20 },
-  { x: 6, y: 18.9 },
-  { x: 7, y: 16.2 },
-  { x: 8, y: 14.9 },
-  { x: 9, y: 14.4 },
-  { x: 10, y: 15.5 }
-];
-
-const tempData2 = [
-  { x: 1, y: 17.1 },
-  { x: 2, y: 15.5 },
-  { x: 3, y: 14.8 },
-  { x: 4, y: 12.4 },
-  { x: 5, y: 15.3 },
-  { x: 6, y: 18.1 },
-  { x: 7, y: 18.9 },
-  { x: 8, y: 16.2 },
-  { x: 9, y: 13.3 },
-  { x: 10, y: 12.1 }
-];
-
-const tempData3 = [
-  { x: 1, y: 14.3 },
-  { x: 2, y: 14 },
-  { x: 3, y: 16.8 },
-  { x: 4, y: 17.9 },
-  { x: 5, y: 19.4 },
-  { x: 6, y: 17 },
-  { x: 7, y: 14.6 },
-  { x: 8, y: 13.6 },
-  { x: 9, y: 16.9 },
-  { x: 10, y: 18.1 }
-];
-
-const tempData4 = [
-  { x: 1, y: 14.2 },
-  { x: 2, y: 16.9 },
-  { x: 3, y: 17.6 },
-  { x: 4, y: 16.7 },
-  { x: 5, y: 14.3 },
-  { x: 6, y: 13 },
-  { x: 7, y: 16.7 },
-  { x: 8, y: 18.6 },
-  { x: 9, y: 20.2 },
-  { x: 10, y: 18.5 }
-];
-
-const humidData = [
-  { x: 1, y: 0.25 },
-  { x: 2, y: 0.75 },
-  { x: 3, y: 1.11 },
-  { x: 4, y: 1.25 },
-  { x: 5, y: 1.11 },
-  { x: 6, y: 0.75 },
-  { x: 7, y: 0.25 },
-  { x: 8, y: 0.25 },
-  { x: 9, y: 0.22 },
-  { x: 10, y: 0.25 }
-];
-
-const waterData = [
-  { x: 1, y: 10 },
-  { x: 2, y: 10 },
-  { x: 3, y: 90 },
-  { x: 4, y: 95 },
-  { x: 5, y: 90 },
-  { x: 6, y: 80 },
-  { x: 7, y: 50 },
-  { x: 8, y: 30 },
-  { x: 9, y: 20 },
-  { x: 10, y: 10 }
-];
-
-const waterLine = [
-  { x: 1, y: 25 },
-  { x: 2, y: 25 },
-  { x: 3, y: 25 },
-  { x: 4, y: 25 },
-  { x: 5, y: 25 },
-  { x: 6, y: 25 },
-  { x: 7, y: 25 },
-  { x: 8, y: 25 },
-  { x: 9, y: 25 },
-  { x: 10, y: 25 }
-];
 
 const photos = ["./tomato.png", "./corn.png", "./carrot.png", "./leafy.png"];
 
@@ -138,13 +48,15 @@ class Home extends Component {
               <YAxis />
               <VerticalBarSeries
                 className="area-series"
-                data={waterData}
+                data={this.props.data}
+                getY={d => d.moisture}
                 color="aqua"
               />
               <LineSeries
                 className="line-series"
                 strokeStyle="dashed"
-                data={waterLine}
+                data={this.props.data}
+                getY={d => 25}
                 color="grey"
               />
             </FlexibleXYPlot>
@@ -159,13 +71,14 @@ class Home extends Component {
               <YAxis />
               <VerticalBarSeries
                 className="humidity-series"
-                data={humidData}
+                data={this.props.data}
                 color="#FFAA33"
-                getY={d => d.y * 20}
+                getY={d => d.humidity / 2}
               />
               <LineMarkSeries
                 className="linemark-series"
-                data={tempData1}
+                data={this.props.data}
+                getY={d => d.temp}
                 fill="grey"
               />
             </FlexibleXYPlot>
@@ -249,22 +162,25 @@ class Home extends Component {
               <YAxis />
               <LineSeries
                 className="line-series"
-                data={tempData1}
+                data={this.props.data}
+                getY={d => d.temp}
                 color="#FF4433"
               />
               <LineSeries
                 className="line-series"
-                data={tempData2}
+                data={tempData}
                 color="#FFAA33"
               />
               <LineSeries
                 className="line-series"
-                data={tempData3}
+                data={tempData}
+                getY={d => d.y * 0.75}
                 color="#FF6B00"
               />
               <LineSeries
                 className="line-series"
-                data={tempData4}
+                data={tempData}
+                getY={d => d.y * 0.8}
                 color="#33FFAA"
               />
             </FlexibleXYPlot>
@@ -277,31 +193,33 @@ class Home extends Component {
               <YAxis />
               <LineSeries
                 className="line-series"
-                data={waterData}
+                data={this.props.data}
+                getY={d => d.moisture}
                 color="#FF4433"
               />
               <LineSeries
                 className="line-series"
-                data={waterData}
-                getY={d => d.y * 0.5 + 0.1}
+                data={this.props.data}
+                getY={d => d.moisture * 0.5 + 0.1}
                 color="#FFAA33"
               />
               <LineSeries
                 className="line-series"
-                data={waterData}
-                getY={d => d.y * 0.3 + 0.1}
+                data={this.props.data}
+                getY={d => d.moisture * 0.3 + 0.1}
                 color="#FF6B00"
               />
               <LineSeries
                 className="line-series"
-                data={waterData}
-                getY={d => d.y * 0.4 + 0.1}
+                data={this.props.data}
+                getY={d => d.moisture * 0.4 + 0.1}
                 color="#33FFAA"
               />
               <LineSeries
                 className="line-series"
                 strokeStyle="dashed"
-                data={waterLine}
+                data={this.props.data}
+                getY={d => 25}
                 color="grey"
               />
               <ChartLabel
@@ -335,10 +253,10 @@ class Home extends Component {
       if (!this.props.ismobile) {
         return (
           <div className="home">
-            {this.column(photos[0], status[0], waterData, projection[0])}
-            {this.column(photos[1], status[1], waterData, projection[1])}
-            {this.column(photos[2], status[2], waterData, projection[2])}
-            {this.column(photos[3], status[3], waterData, projection[3])}
+            {this.column(photos[0], status[0], this.props.data, projection[0])}
+            {this.column(photos[1], status[1], this.props.data, projection[1])}
+            {this.column(photos[2], status[2], this.props.data, projection[2])}
+            {this.column(photos[3], status[3], this.props.data, projection[3])}
           </div>
         );
       } else {

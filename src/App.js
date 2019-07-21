@@ -55,10 +55,15 @@ class App extends Component {
           drawgraphs={this.state.drawgraphs}
           changeActiveComponent={this.changeActiveComponent}
           ismobile={this.state.ismobile}
+          data={this.state.data}
         />
         <Info page={this.state.page} ismobile={this.state.ismobile} />
         <Login page={this.state.page} />
-        <Plants page={this.state.page} ismobile={this.state.ismobile} />
+        <Plants
+          page={this.state.page}
+          ismobile={this.state.ismobile}
+          data={this.state.data}
+        />
       </div>
     );
   }
