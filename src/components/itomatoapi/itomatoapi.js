@@ -1,5 +1,5 @@
 export const itomatoGetData = () => {
-  const data = fetch("http://localhost:3000/crud")
+  const data = fetch("https://itomato-server.herokuapp.com/crud")
     .then(response => response.json())
     .then(data => {
       return data;
