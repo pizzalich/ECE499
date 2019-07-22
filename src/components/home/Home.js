@@ -46,19 +46,19 @@ class Home extends Component {
             <FlexibleXYPlot className="moisturegraph">
               <XAxis />
               <YAxis />
-              <VerticalBarSeries
+              {/* <VerticalBarSeries
                 className="area-series"
                 data={data}
                 getX={d => d.x}
                 getY={d => d.moisture}
                 color="aqua"
-              />
+              /> */}
               <LineSeries
                 className="line-series"
                 strokeStyle="dashed"
                 data={data}
                 getX={d => d.x}
-                getY={d => 25}
+                getY={d => 30}
                 color="grey"
               />
             </FlexibleXYPlot>
@@ -71,13 +71,13 @@ class Home extends Component {
             <FlexibleXYPlot colorType="literal" className="tempgraph">
               <XAxis />
               <YAxis />
-              <VerticalBarSeries
+              {/* <VerticalBarSeries
                 className="humidity-series"
                 data={data}
                 getX={d => d.x}
-                getY={d => d.humidity / 2}
+                getY={d => d.humidity}
                 color="#FFAA33"
-              />
+              /> */}
               <LineMarkSeries
                 className="linemark-series"
                 data={data}
@@ -229,7 +229,7 @@ class Home extends Component {
                 strokeStyle="dashed"
                 data={this.props.data}
                 getX={d => d.x}
-                getY={d => 25}
+                getY={d => 30}
                 color="grey"
               />
               <ChartLabel
