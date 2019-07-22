@@ -1,6 +1,13 @@
 export const itomatoGetData = () => {
+  var count = 0;
   const data = fetch("https://itomato-server.herokuapp.com/crud")
     .then(response => response.json())
+    .then(data =>
+      data.forEach(element => {
+        element.x = count;
+        count++;
+      })
+    )
     .then(data => {
       return data;
     })
