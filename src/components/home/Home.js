@@ -56,7 +56,7 @@ class Home extends Component {
               <LineSeries
                 className="line-series"
                 strokeStyle="dashed"
-                data={data}
+                data={this.props.data}
                 getX={d => d.x}
                 getY={d => 30}
                 color="grey"
@@ -80,7 +80,7 @@ class Home extends Component {
               /> */}
               <LineMarkSeries
                 className="linemark-series"
-                data={data}
+                data={this.props.data}
                 getX={d => d.x}
                 getY={d => d.temp}
                 fill="grey"
