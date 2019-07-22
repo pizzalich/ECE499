@@ -56,15 +56,23 @@ class Home extends Component {
         <div className="graph">
           Soil Moisture
           {this.props.drawgraphs && this.state.data && (
-            <FlexibleXYPlot className="mobilemoisturegraph" yDomain={[0, 100]}>
+            <FlexibleXYPlot className="moisturegraph" yDomain={[0, 100]}>
               <XAxis />
               <YAxis />
               <LineSeries
                 className="line-series"
-                data={this.props.data}
+                data={data}
                 getX={d => d.x}
                 getY={d => d.moisture}
                 color="#FF4433"
+              />
+              <LineSeries
+                className="line-series"
+                strokeStyle="dashed"
+                data={data}
+                getX={d => d.x}
+                getY={d => 30}
+                color="grey"
               />
             </FlexibleXYPlot>
           )}
@@ -73,7 +81,7 @@ class Home extends Component {
         <div className="graph">
           Temperature & Humidity
           {this.props.drawgraphs && this.state.data && (
-            <FlexibleXYPlot className="tempgraph" yDomain={[10, 25]}>
+            <FlexibleXYPlot className="tempgraph" yDomain={[0, 100]}>
               <XAxis />
               <YAxis />
               <VerticalBarSeries
@@ -81,7 +89,7 @@ class Home extends Component {
                 data={data}
                 getX={d => d.x}
                 getY={d => d.humidity}
-                color="#FFAA33"
+                color="aqua"
               />
               <LineMarkSeries
                 className="linemark-series"
