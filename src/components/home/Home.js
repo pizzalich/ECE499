@@ -48,14 +48,14 @@ class Home extends Component {
               <YAxis />
               <VerticalBarSeries
                 className="area-series"
-                data={this.props.data}
+                data={data}
                 getY={d => d.moisture}
                 color="aqua"
               />
               <LineSeries
                 className="line-series"
                 strokeStyle="dashed"
-                data={this.props.data}
+                data={data}
                 getY={d => 25}
                 color="grey"
               />
@@ -71,13 +71,13 @@ class Home extends Component {
               <YAxis />
               <VerticalBarSeries
                 className="humidity-series"
-                data={this.props.data}
+                data={data}
                 color="#FFAA33"
                 getY={d => d.humidity / 2}
               />
               <LineMarkSeries
                 className="linemark-series"
-                data={this.props.data}
+                data={data}
                 getY={d => d.temp}
                 fill="grey"
               />
