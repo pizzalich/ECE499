@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import {
   FlexibleXYPlot,
   VerticalBarSeries,
-  LineMarkSeries,
   LineSeries,
   ChartLabel,
   XAxis,
