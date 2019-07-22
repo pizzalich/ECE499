@@ -96,7 +96,7 @@ class Home extends Component {
                 data={data}
                 getX={d => d.x}
                 getY={d => d.temp}
-                fill="grey"
+                fill="#FFAA33"
               />
             </FlexibleXYPlot>
           )}
