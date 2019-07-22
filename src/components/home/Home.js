@@ -81,17 +81,17 @@ class Home extends Component {
         <div className="graph">
           Temperature & Humidity
           {this.props.drawgraphs && this.state.data && (
-            <FlexibleXYPlot className="tempgraph" yDomain={[0, 100]}>
+            <FlexibleXYPlot className="tempgraph" yDomain={[0, 25]}>
               <XAxis />
               <YAxis />
               <VerticalBarSeries
                 className="humidity-series"
                 data={data}
                 getX={d => d.x}
-                getY={d => d.humidity}
+                getY={d => d.humidity / 4}
                 color="aqua"
               />
-              <LineMarkSeries
+              <LineSeries
                 className="linemark-series"
                 data={data}
                 getX={d => d.x}
