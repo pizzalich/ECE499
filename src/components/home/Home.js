@@ -69,7 +69,7 @@ class Home extends Component {
               <LineSeries
                 className="line-series"
                 strokeStyle="dashed"
-                data={data}
+                data={this.state.data}
                 getX={d => d.x}
                 getY={d => 30}
                 color="grey"
