@@ -20,6 +20,12 @@ const status = ["good", "dry", "dead", "wet"];
 const projection = ["25", "69", "420", "0"];
 
 class Home extends Component {
+  componentDidUpdate(prevProps) {
+    if (this.props.data !== prevProps.data) {
+      this.setState({ data: data });
+    }
+  }
+
   getStatus = status => {
     if (status === "good") return "😊";
     if (status === "dry") return "🔥";
@@ -28,6 +34,7 @@ class Home extends Component {
   };
 
   column = (photo, status, data, projection) => {
+    console.log(data);
     return (
       <div className="column">
         <div className="padding" />
@@ -37,50 +44,49 @@ class Home extends Component {
         <div className="status">
           <div>Plant ID: 0xFFAAFF</div>
           <div>Status: {this.getStatus(status)}</div>
-          {/* TODO: getTemp fn */}
           <div>Temperature: 25°C</div>
         </div>
         <div className="graph">
           Soil Moisture
-          {this.props.drawgraphs && (
+          {this.props.drawgraphs && !isNull(this.state.data) && (
             <FlexibleXYPlot className="moisturegraph">
               <XAxis />
               <YAxis />
-              {/* <VerticalBarSeries
+              <VerticalBarSeries
                 className="area-series"
                 data={data}
                 getX={d => d.x}
                 getY={d => d.moisture}
                 color="aqua"
-              /> */}
-              {/* <LineSeries
+              />
+              <LineSeries
                 className="line-series"
                 strokeStyle="dashed"
-                data={this.props.data}
+                data={data}
                 getX={d => d.x}
                 getY={d => 30}
                 color="grey"
-              /> */}
+              />
             </FlexibleXYPlot>
           )}
         </div>
         <div className="padding" />
         <div className="graph">
           Temperature & Humidity
-          {this.props.drawgraphs && (
+          {this.props.drawgraphs && !isNull(this.state.data) && (
             <FlexibleXYPlot colorType="literal" className="tempgraph">
               <XAxis />
               <YAxis />
-              {/* <VerticalBarSeries
+              <VerticalBarSeries
                 className="humidity-series"
                 data={data}
                 getX={d => d.x}
                 getY={d => d.humidity}
                 color="#FFAA33"
-              /> */}
+              />
               <LineMarkSeries
                 className="linemark-series"
-                data={this.props.data}
+                data={data}
                 getX={d => d.x}
                 getY={d => d.temp}
                 fill="grey"
@@ -145,7 +151,7 @@ class Home extends Component {
           </div>
         </div>
         <div className="mobiletemp">
-          {this.props.drawgraphs && (
+          {this.props.drawgraphs && !isNull(this.state.data) && (
             <FlexibleXYPlot
               colorType="literal"
               className="mobiletempgraph"
@@ -192,7 +198,7 @@ class Home extends Component {
           )}
         </div>
         <div className="mobilemoisture">
-          {this.props.drawgraphs && (
+          {this.props.drawgraphs && !isNull(this.state.data) && (
             <FlexibleXYPlot className="mobilemoisturegraph" yDomain={[0, 100]}>
               <XAxis />
               <YAxis />
@@ -263,10 +269,10 @@ class Home extends Component {
       if (!this.props.ismobile) {
         return (
           <div className="home">
-            {this.column(photos[0], status[0], this.props.data, projection[0])}
-            {this.column(photos[1], status[1], this.props.data, projection[1])}
-            {this.column(photos[2], status[2], this.props.data, projection[2])}
-            {this.column(photos[3], status[3], this.props.data, projection[3])}
+            {this.column(photos[0], status[0], this.state.data, projection[0])}
+            {this.column(photos[1], status[1], this.state.data, projection[1])}
+            {this.column(photos[2], status[2], this.state.data, projection[2])}
+            {this.column(photos[3], status[3], this.state.data, projection[3])}
           </div>
         );
       } else {
