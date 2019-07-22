@@ -71,20 +71,20 @@ class Home extends Component {
             <FlexibleXYPlot colorType="literal" className="tempgraph">
               <XAxis />
               <YAxis />
-              <VerticalBarSeries
+              {/* <VerticalBarSeries
                 className="humidity-series"
                 data={data}
                 getX={d => d.x}
                 getY={d => d.humidity}
                 color="#FFAA33"
-              />
-              {/* <LineMarkSeries
+              /> */}
+              <LineMarkSeries
                 className="linemark-series"
                 data={this.props.data}
                 getX={d => d.x}
                 getY={d => d.temp}
                 fill="grey"
-              /> */}
+              />
             </FlexibleXYPlot>
           )}
         </div>
