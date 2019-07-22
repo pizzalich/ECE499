@@ -20,6 +20,11 @@ const status = ["good", "dry", "dead", "wet"];
 const projection = ["25", "69", "420", "0"];
 
 class Home extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { data: null };
+  }
+
   componentDidUpdate(prevProps) {
     if (this.props.data) {
       if (this.props.data !== prevProps.data) {
