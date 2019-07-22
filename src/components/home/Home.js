@@ -72,8 +72,8 @@ class Home extends Component {
         <div className="padding" />
         <div className="graph">
           Temperature & Humidity
-          {/* {this.props.drawgraphs && this.state.data && (
-            <FlexibleXYPlot colorType="literal" className="tempgraph">
+          {this.props.drawgraphs && this.state.data && (
+            <FlexibleXYPlot className="tempgraph" yDomain={[10, 25]}>
               <XAxis />
               <YAxis />
               <VerticalBarSeries
@@ -91,7 +91,7 @@ class Home extends Component {
                 fill="grey"
               />
             </FlexibleXYPlot>
-          )} */}
+          )}
         </div>
         <div className="padding" />
         <div className="projection">
