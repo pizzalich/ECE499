@@ -174,7 +174,7 @@ class Plants extends Component {
           <div className="pannelright">
             {(!this.props.ismobile || this.state.showgraph === "moist") && (
               <div className="graphbox">
-                <FlexibleXYPlot xType="time" colorType="literal">
+                <FlexibleXYPlot xType="time">
                   <ChartLabel
                     text="Soil Moisture Level [%]"
                     className="alt-y-label-moist"
@@ -189,7 +189,9 @@ class Plants extends Component {
                   />
                   <VerticalBarSeries
                     className="area-series"
-                    data={waterData}
+                    data={this.props.data}
+                    getX={d => d.x}
+                    getY={d => d.moisture}
                     color="aqua"
                     onValueMouseOut={(datapoint, event) => {
                       this.setState({ moisthint: false });
@@ -210,7 +212,7 @@ class Plants extends Component {
                   {this.state.moisthint && (
                     <Hint value={this.state.moistpoint}>
                       <div className="moisttooltip">
-                        <p>{this.state.moistpoint.y + "%"}</p>
+                        <p>{this.state.moistpoint.moisture + "%"}</p>
                       </div>
                     </Hint>
                   )}
@@ -234,7 +236,9 @@ class Plants extends Component {
                   />
                   <VerticalBarSeries
                     className="humidity-series"
-                    data={humidData}
+                    data={this.props.data}
+                    getX={d => d.x}
+                    getY={d => d.humidity}
                     color="FFAA33"
                     onValueMouseOut={(datapoint, event) => {
                       this.setState({ humhint: false });
@@ -249,21 +253,23 @@ class Plants extends Component {
                   {this.state.humhint && (
                     <Hint value={this.state.humpoint}>
                       <div className="humtooltip">
-                        <p>{this.state.humpoint.y + "%"}</p>
+                        <p>{this.state.humpoint.humidity + "%"}</p>
                       </div>
                     </Hint>
                   )}
                   {this.state.temphint && (
                     <Hint value={this.state.temppoint}>
                       <div className="temptooltip">
-                        <p>{this.state.temppoint.y + "°C"}</p>
+                        <p>{this.state.temppoint.temp + "°C"}</p>
                       </div>
                     </Hint>
                   )}
                   <LineMarkSeries
                     className="linemark-series"
                     fill="grey"
-                    data={tempData}
+                    data={this.props.data}
+                    getX={d => d.x}
+                    getX={d => d.temp}
                     onValueMouseOut={(datapoint, event) => {
                       this.setState({ temphint: false });
                     }}
