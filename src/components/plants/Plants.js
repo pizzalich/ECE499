@@ -167,7 +167,7 @@ class Plants extends Component {
             )}
             {(!this.props.ismobile || this.state.showgraph === "temp") && (
               <div className="graphbox">
-                <FlexibleXYPlot yDomain={[0, 100]} xDomain={[-1, 41]}>
+                <FlexibleXYPlot yDomain={[0, 25]} xDomain={[-1, 41]}>
                   <ChartLabel
                     text="Temperature and Humidity [°C/%]"
                     className="alt-y-label-temp"
@@ -199,8 +199,8 @@ class Plants extends Component {
                   {this.state.humhint && (
                     <Hint
                       value={{
-                        x: this.state.humpoint,
-                        y: this.state.humpoint.humidity
+                        x: this.state.humpoint.x,
+                        y: this.state.humpoint.humidity / 4
                       }}
                     >
                       <div className="humtooltip">
@@ -211,7 +211,7 @@ class Plants extends Component {
                   {this.state.temphint && (
                     <Hint
                       value={{
-                        x: this.state.temppoint,
+                        x: this.state.temppoint.x,
                         y: this.state.temppoint.temp
                       }}
                     >
