@@ -21,8 +21,10 @@ const projection = ["25", "69", "420", "0"];
 
 class Home extends Component {
   componentDidUpdate(prevProps) {
-    if (this.props.data !== prevProps.data) {
-      this.setState({ data: this.props.data });
+    if (this.props.data) {
+      if (this.props.data !== prevProps.data) {
+        this.setState({ data: this.props.data });
+      }
     }
   }
 
