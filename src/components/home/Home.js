@@ -22,7 +22,7 @@ const projection = ["25", "69", "420", "0"];
 class Home extends Component {
   componentDidUpdate(prevProps) {
     if (this.props.data !== prevProps.data) {
-      this.setState({ data: data });
+      this.setState({ data: this.props.data });
     }
   }
 
@@ -48,7 +48,7 @@ class Home extends Component {
         </div>
         <div className="graph">
           Soil Moisture
-          {this.props.drawgraphs && !isNull(this.state.data) && (
+          {this.props.drawgraphs && this.state.data && (
             <FlexibleXYPlot className="moisturegraph">
               <XAxis />
               <YAxis />
@@ -73,7 +73,7 @@ class Home extends Component {
         <div className="padding" />
         <div className="graph">
           Temperature & Humidity
-          {this.props.drawgraphs && !isNull(this.state.data) && (
+          {this.props.drawgraphs && this.state.data && (
             <FlexibleXYPlot colorType="literal" className="tempgraph">
               <XAxis />
               <YAxis />
@@ -151,7 +151,7 @@ class Home extends Component {
           </div>
         </div>
         <div className="mobiletemp">
-          {this.props.drawgraphs && !isNull(this.state.data) && (
+          {this.props.drawgraphs && this.state.data && (
             <FlexibleXYPlot
               colorType="literal"
               className="mobiletempgraph"
@@ -198,7 +198,7 @@ class Home extends Component {
           )}
         </div>
         <div className="mobilemoisture">
-          {this.props.drawgraphs && !isNull(this.state.data) && (
+          {this.props.drawgraphs && this.state.data && (
             <FlexibleXYPlot className="mobilemoisturegraph" yDomain={[0, 100]}>
               <XAxis />
               <YAxis />
