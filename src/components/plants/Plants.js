@@ -215,7 +215,7 @@ class Plants extends Component {
                     fill="grey"
                     data={this.props.data}
                     getX={d => d.x}
-                    getX={d => d.temp}
+                    getY={d => d.temp}
                     onValueMouseOut={(datapoint, event) => {
                       this.setState({ temphint: false });
                     }}
