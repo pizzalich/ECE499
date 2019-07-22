@@ -156,7 +156,12 @@ class Plants extends Component {
                     color="grey"
                   />
                   {this.state.moisthint && (
-                    <Hint value={this.state.moistpoint}>
+                    <Hint
+                      value={{
+                        x: this.state.moistpoint.x,
+                        y: this.state.moistpoint.moisture
+                      }}
+                    >
                       <div className="moisttooltip">
                         <p>{this.state.moistpoint.moisture + "%"}</p>
                       </div>
