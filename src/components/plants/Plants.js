@@ -12,62 +12,6 @@ import {
 import "./Plants.css";
 import "../../../node_modules/react-vis/dist/style.css";
 
-const tempData = [
-  { x: 1, y: 1.25, color: "#FFAA33" },
-  { x: 2, y: 1.75, color: "#FFAA33" },
-  { x: 3, y: 2.11, color: "#FFAA33" },
-  { x: 4, y: 2.25, color: "#FFAA33" },
-  { x: 5, y: 2.11, color: "#FFAA33" },
-  { x: 6, y: 1.75, color: "#FFAA33" },
-  { x: 7, y: 1.25, color: "#FFAA33" },
-  { x: 8, y: 0.75, color: "#33A2FF" },
-  { x: 9, y: 0.38, color: "#33A2FF" },
-  { x: 10, y: 0.25, color: "#33A2FF" },
-  { x: 11, y: 0.38, color: "#33A2FF" },
-  { x: 12, y: 0.75, color: "#33A2FF" }
-];
-
-const humidData = [
-  { x: 1, y: 0.25 },
-  { x: 2, y: 0.75 },
-  { x: 3, y: 1.11 },
-  { x: 4, y: 1.25 },
-  { x: 5, y: 1.11 },
-  { x: 6, y: 0.75 },
-  { x: 7, y: 0.25 },
-  { x: 8, y: 0.25 },
-  { x: 9, y: 0.22 },
-  { x: 10, y: 0.25 },
-  { x: 11, y: 0.32 },
-  { x: 12, y: 0.25 }
-];
-
-const waterData = [
-  { x: 1, y: 0.1 },
-  { x: 2, y: 0.1 },
-  { x: 3, y: 1 },
-  { x: 4, y: 1 },
-  { x: 5, y: 1 },
-  { x: 6, y: 0.8 },
-  { x: 7, y: 0.5 },
-  { x: 8, y: 0.3 },
-  { x: 9, y: 0.2 },
-  { x: 10, y: 0.1 }
-];
-
-const waterLine = [
-  { x: 1, y: 0.25 },
-  { x: 2, y: 0.25 },
-  { x: 3, y: 0.25 },
-  { x: 4, y: 0.25 },
-  { x: 5, y: 0.25 },
-  { x: 6, y: 0.25 },
-  { x: 7, y: 0.25 },
-  { x: 8, y: 0.25 },
-  { x: 9, y: 0.25 },
-  { x: 10, y: 0.25 }
-];
-
 class Plants extends Component {
   constructor(props) {
     super(props);
@@ -174,7 +118,7 @@ class Plants extends Component {
           <div className="pannelright">
             {(!this.props.ismobile || this.state.showgraph === "moist") && (
               <div className="graphbox">
-                <FlexibleXYPlot xType="time">
+                <FlexibleXYPlot yDomain={[0, 100]}>
                   <ChartLabel
                     text="Soil Moisture Level [%]"
                     className="alt-y-label-moist"
@@ -206,7 +150,9 @@ class Plants extends Component {
                   <LineSeries
                     className="line-series"
                     strokeStyle="dashed"
-                    data={waterLine}
+                    data={this.props.data}
+                    getX={d => d.x}
+                    getY={d => 30}
                     color="grey"
                   />
                   {this.state.moisthint && (
@@ -221,7 +167,7 @@ class Plants extends Component {
             )}
             {(!this.props.ismobile || this.state.showgraph === "temp") && (
               <div className="graphbox">
-                <FlexibleXYPlot>
+                <FlexibleXYPlot yDomain={[0, 100]}>
                   <ChartLabel
                     text="Temperature and Humidity [°C/%]"
                     className="alt-y-label-temp"
