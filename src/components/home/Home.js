@@ -41,7 +41,6 @@ class Home extends Component {
   };
 
   column = (photo, status, data, projection) => {
-    console.log(data);
     return (
       <div className="column">
         <div className="padding" />
@@ -92,11 +91,11 @@ class Home extends Component {
                 color="aqua"
               />
               <LineSeries
-                className="linemark-series"
+                className="line-series"
                 data={data}
                 getX={d => d.x}
                 getY={d => d.temp}
-                fill="#FFAA33"
+                color="#FFAA33"
               />
             </FlexibleXYPlot>
           )}
