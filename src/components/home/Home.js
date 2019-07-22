@@ -53,14 +53,14 @@ class Home extends Component {
                 getY={d => d.moisture}
                 color="aqua"
               /> */}
-              <LineSeries
+              {/* <LineSeries
                 className="line-series"
                 strokeStyle="dashed"
                 data={this.props.data}
                 getX={d => d.x}
                 getY={d => 30}
                 color="grey"
-              />
+              /> */}
             </FlexibleXYPlot>
           )}
         </div>
@@ -78,13 +78,13 @@ class Home extends Component {
                 getY={d => d.humidity}
                 color="#FFAA33"
               /> */}
-              <LineMarkSeries
+              {/* <LineMarkSeries
                 className="linemark-series"
                 data={this.props.data}
                 getX={d => d.x}
                 getY={d => d.temp}
                 fill="grey"
-              />
+              /> */}
             </FlexibleXYPlot>
           )}
         </div>
