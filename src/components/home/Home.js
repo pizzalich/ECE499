@@ -49,6 +49,7 @@ class Home extends Component {
               <VerticalBarSeries
                 className="area-series"
                 data={data}
+                getX={d => data.indexOf(d)}
                 getY={d => d.moisture}
                 color="aqua"
               />
@@ -56,6 +57,7 @@ class Home extends Component {
                 className="line-series"
                 strokeStyle="dashed"
                 data={data}
+                getX={d => data.indexOf(d)}
                 getY={d => 25}
                 color="grey"
               />
@@ -72,12 +74,14 @@ class Home extends Component {
               <VerticalBarSeries
                 className="humidity-series"
                 data={data}
-                color="#FFAA33"
+                getX={d => data.indexOf(d)}
                 getY={d => d.humidity / 2}
+                color="#FFAA33"
               />
               <LineMarkSeries
                 className="linemark-series"
                 data={data}
+                getX={d => data.indexOf(d)}
                 getY={d => d.temp}
                 fill="grey"
               />
@@ -163,6 +167,7 @@ class Home extends Component {
               <LineSeries
                 className="line-series"
                 data={this.props.data}
+                getX={d => this.props.data.indexOf(d)}
                 getY={d => d.temp}
                 color="#FF4433"
               />
@@ -194,24 +199,28 @@ class Home extends Component {
               <LineSeries
                 className="line-series"
                 data={this.props.data}
+                getX={d => this.props.data.indexOf(d)}
                 getY={d => d.moisture}
                 color="#FF4433"
               />
               <LineSeries
                 className="line-series"
                 data={this.props.data}
+                getX={d => this.props.data.indexOf(d)}
                 getY={d => d.moisture * 0.5 + 0.1}
                 color="#FFAA33"
               />
               <LineSeries
                 className="line-series"
                 data={this.props.data}
+                getX={d => this.props.data.indexOf(d)}
                 getY={d => d.moisture * 0.3 + 0.1}
                 color="#FF6B00"
               />
               <LineSeries
                 className="line-series"
                 data={this.props.data}
+                getX={d => this.props.data.indexOf(d)}
                 getY={d => d.moisture * 0.4 + 0.1}
                 color="#33FFAA"
               />
@@ -219,6 +228,7 @@ class Home extends Component {
                 className="line-series"
                 strokeStyle="dashed"
                 data={this.props.data}
+                getX={d => this.props.data.indexOf(d)}
                 getY={d => 25}
                 color="grey"
               />
