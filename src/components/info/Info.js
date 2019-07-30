@@ -170,7 +170,7 @@ class Info extends Component {
           </div>
           <div className="barleft">
             <div className="profilepic">
-              <img className="profilepicimg" src="./leafy.png" alt=" " />
+              <img className="profilepicimg" src="./kevin.jpg" alt=" " />
             </div>
             <div className="summaryleft">
               <u>Kevin Cao</u> is finishing his final semester at UVic where he

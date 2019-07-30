@@ -166,8 +166,8 @@ class Home extends Component {
                 text="Temperature [°C]"
                 className="alt-y-label-temp"
                 includeMargin={false}
-                xPercent={0.02}
-                yPercent={0.06}
+                xPercent={0.03}
+                yPercent={0.08}
                 style={{
                   textAnchor: "start",
                   fontSize: "12"
@@ -247,8 +247,8 @@ class Home extends Component {
                 text="Soil Moisture [%]"
                 className="alt-y-label-temp"
                 includeMargin={false}
-                xPercent={0.02}
-                yPercent={0.06}
+                xPercent={0.03}
+                yPercent={0.08}
                 style={{
                   textAnchor: "start",
                   fontSize: "12"
