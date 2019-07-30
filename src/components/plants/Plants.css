@@ -25,10 +25,27 @@
   display: -webkit-flex; /* NEW - Chrome */
   display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
   height: 40%;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
   background-color: #555;
+}
+
+.switchbox {
+  display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox; /* TWEENER - IE 10 */
+  display: -webkit-flex; /* NEW - Chrome */
+  display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+  height: 50%;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-end;
+  background-color: #555;
+}
+.thumbnail {
+  width: 50%;
+  height: auto;
 }
 
 .controlbox {
@@ -95,6 +112,12 @@
   font-size: 14px;
 }
 
+.react-switch {
+  vertical-align: middle;
+  margin-left: 4px;
+  display: inline;
+}
+
 @media only screen and (max-width: 600px) {
   .plants {
     flex-direction: column;
@@ -133,6 +156,15 @@
   }
   .statsdata {
     width: 50%;
+  }
+
+  .switchbox {
+    height: 100%;
+  }
+
+  .thumbnail {
+    height: 100%;
+    width: auto;
   }
 
   .graphbuttons {

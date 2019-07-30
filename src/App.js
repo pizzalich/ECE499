@@ -5,19 +5,33 @@ import Info from "./components/info/Info.js";
 import Login from "./components/login/Login.js";
 import Plants from "./components/plants/Plants.js";
 import Splash from "./components/splash/splash.js";
-import { itomatoGetData } from "./components/itomatoapi/itomatoapi.js";
+import {
+  itomatoGetData,
+  itomatoGetServo
+} from "./components/itomatoapi/itomatoapi.js";
 import "./App.css";
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { page: "home", drawgraphs: false, ismobile: false };
+    this.state = {
+      page: "home",
+      drawgraphs: false,
+      ismobile: false,
+      servo: { fan: 0, pump: 0, vent: 0 }
+    };
   }
 
   componentDidMount() {
     window.addEventListener("resize", this.updateWindowSize);
     var data = itomatoGetData();
     data.then(data => this.setState({ data: data }));
+    var servo = itomatoGetServo();
+    servo.then(servo => {
+      if (servo !== undefined) {
+        this.setState({ servo: servo[0] });
+      }
+    });
     var size = document.getElementsByClassName("App")[0].clientWidth;
     if (size <= 600) {
       this.setState({ ismobile: true });
@@ -39,6 +53,10 @@ class App extends Component {
 
   changeDrawGraphs = () => {
     this.setState({ drawgraphs: true });
+  };
+
+  updateServo = servo => {
+    this.setState({ servo: servo });
   };
 
   render() {
@@ -63,6 +81,8 @@ class App extends Component {
           page={this.state.page}
           ismobile={this.state.ismobile}
           data={this.state.data}
+          servo={this.state.servo}
+          updateServo={this.updateServo}
         />
       </div>
     );

@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import Switch from "react-switch";
+import { itomatoPostServo } from "../itomatoapi/itomatoapi.js";
 import {
   FlexibleXYPlot,
   VerticalBarSeries,
@@ -37,6 +39,44 @@ class Plants extends Component {
     };
   }
 
+  handleChangeFan = () => {
+    var servo = {
+      fan: this.props.servo.fan === 1 ? 0 : 1,
+      pump: this.props.servo.pump,
+      vent: this.props.servo.vent
+    };
+    this.props.updateServo(servo);
+    itomatoPostServo(servo.fan, servo.pump, servo.vent);
+  };
+
+  handleChangePump = () => {
+    var servo = {
+      fan: this.props.servo.fan,
+      pump: this.props.servo.pump === 1 ? 0 : 1,
+      vent: this.props.servo.vent
+    };
+    this.props.updateServo(servo);
+    itomatoPostServo(servo.fan, servo.pump, servo.vent);
+  };
+
+  handleChangeVent = () => {
+    var servo = {
+      fan: this.props.servo.fan,
+      pump: this.props.servo.pump,
+      vent: this.props.servo.vent === 1 ? 0 : 1
+    };
+    this.props.updateServo(servo);
+    itomatoPostServo(servo.fan, servo.pump, servo.vent);
+  };
+
+  componentDidUpdate(prevProps) {
+    if (this.props.servo) {
+      if (this.props.servo !== prevProps.servo) {
+        this.setState({ servo: this.props.servo });
+      }
+    }
+  }
+
   render() {
     if (this.props.page === "plants") {
       return (
@@ -44,6 +84,32 @@ class Plants extends Component {
           <div className="pannelleft">
             <div className="feedbox">
               <img src="./tomato.png" alt="Plant 1" className="thumbnail" />
+              <div className="switchbox">
+                <div className="switchpair">
+                  <span>Fan: </span>
+                  <Switch
+                    onChange={this.handleChangeFan}
+                    checked={!!this.props.servo.fan}
+                    className="react-switch"
+                  />
+                </div>
+                <div className="switchpair">
+                  <span>Vent: </span>
+                  <Switch
+                    onChange={this.handleChangeVent}
+                    checked={!!this.props.servo.vent}
+                    className="react-switch"
+                  />
+                </div>
+                <div className="switchpair">
+                  <span>Pump: </span>
+                  <Switch
+                    onChange={this.handleChangePump}
+                    checked={!!this.props.servo.pump}
+                    className="react-switch"
+                  />
+                </div>
+              </div>
             </div>
             <div className="controlbox">
               <div className="stats">
