@@ -116,19 +116,21 @@ class Plants extends Component {
                 <div className="statstitle">Current Status</div>
                 <hr />
                 <div className="statsdata">
-                  Temperature: 16°C <br />
+                  Temperature: 17°C <br />
                   {!this.props.ismobile && <br />}
-                  Humidity: 67% <br />
+                  Humidity: 63% <br />
                   {!this.props.ismobile && <br />}
                   Sunlight Last 24h: 16 Hours <br />
                   {!this.props.ismobile && <br />}
-                  Time Remaining: 42 Days
+                  Time Remaining: 25 Days
                   <br />
                   {!this.props.ismobile && <br />}
-                  Fan Status: Off
+                  Soil Moisture: 43%
                   <br />
                   {!this.props.ismobile && <br />}
-                  Water Pump Status: Off
+                  Water Pump Status:{" "}
+                  {!!this.props.servo.pump && <span>On</span>}
+                  {!this.props.servo.pump && <span>Off</span>}
                 </div>
                 {this.props.ismobile && (
                   <div className="graphbuttons">

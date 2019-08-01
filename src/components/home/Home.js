@@ -16,7 +16,7 @@ const photos = ["./tomato.png", "./corn.png", "./carrot.png", "./leafy.png"];
 
 const status = ["good", "dry", "dead", "wet"];
 
-const projection = ["25", "69", "420", "0"];
+const projection = ["25", "24", "20", "0"];
 
 class Home extends Component {
   constructor(props) {
@@ -49,7 +49,7 @@ class Home extends Component {
         <div className="status">
           <div>Plant ID: 0xFFAAFF</div>
           <div>Status: {this.getStatus(status)}</div>
-          <div>Temperature: 25°C</div>
+          <div>Temperature: 17°C</div>
         </div>
         <div className="graph">
           Soil Moisture
